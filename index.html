@@ -430,6 +430,10 @@
                         <i data-lucide="file-text" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>INFRA: Documentos</span>
                     </button>
+                    <button onclick="showDoc('exp')" id="btn-doc-exp" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                        <i data-lucide="award" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
+                        <span>Skills & Exp</span>
+                    </button>
                 </div>
 
                 <!-- Terminal Content Area -->
@@ -536,6 +540,64 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Experiencias Context -->
+                    <div id="doc-exp" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                        <div class="space-y-6">
+                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># Core Competencies [JARVIS_HIGHLIGHT_ACTIVE]</h4>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <div class="p-3 border border-nexus-neon/30 bg-nexus-neon/5 rounded relative overflow-hidden group">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-nexus-neon/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                                    <p class="text-[10px] font-mono text-nexus-neon uppercase">LLM / AI AGENTS</p>
+                                </div>
+                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                    <p class="text-[10px] font-mono text-nexus-blue uppercase">CRITICAL INFRA</p>
+                                </div>
+                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                    <p class="text-[10px] font-mono text-nexus-blue uppercase">SQL / DB AUDIT</p>
+                                </div>
+                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                    <p class="text-[10px] font-mono text-nexus-blue uppercase">LINUX / TERMINAL</p>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 pt-4"># Profissional Timeline</h4>
+                            
+                            <div class="space-y-6 font-mono">
+                                <div class="border-l-2 border-nexus-blue pl-4 py-1">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <p class="text-white text-xs uppercase font-bold">HOSPITAL EVANGÉLICO MACKENZIE</p>
+                                        <p class="text-nexus-blue text-[9px]">MAR 2019 - NOV 2021</p>
+                                    </div>
+                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico em Informática (Front-line COVID UTIs)</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Montagem de 8 UTIs COVID e migração de serviços vitais.</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Suporte in loco N1-N2 para sistemas e redes hospitalares.</p>
+                                </div>
+
+                                <div class="border-l-2 border-white/10 pl-4 py-1">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <p class="text-white text-xs uppercase font-bold">QUALITY IT</p>
+                                        <p class="text-nexus-blue text-[9px]">DEZ 2018 - MAR 2019</p>
+                                    </div>
+                                    <p class="text-slate-400 text-[10px] mb-2 italic">Analista de T.I</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Foco em infraestrutura corporativa e suporte especializado.</p>
+                                </div>
+
+                                <div class="border-l-2 border-white/10 pl-4 py-1">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <p class="text-white text-xs uppercase font-bold">SYKES BRASIL</p>
+                                        <p class="text-nexus-blue text-[9px]">JAN 2018 - DEZ 2019</p>
+                                    </div>
+                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico de Suporte (Dell Brasil Level OSRI)</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Troubleshooting avançado e isolamento de falhas Windows 10.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
                 </div>
             </div>
         </section>
