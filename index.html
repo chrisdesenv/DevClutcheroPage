@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian | Senior Systems Architect & AI Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
@@ -39,7 +42,7 @@
         }
 
         .noxus-grid {
-            background-image: 
+            background-image:
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -88,6 +91,7 @@
             transform: translateY(100px);
             transition: transform 0.3s ease;
         }
+
         #copy-toast.show {
             transform: translateY(0);
         }
@@ -98,8 +102,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .doc-tab-btn.active {
@@ -109,34 +120,47 @@
         }
     </style>
 </head>
+
 <body class="noxus-grid min-h-screen">
 
-    <div id="copy-toast" class="glass-morphism px-6 py-3 rounded-lg border border-nexus-neon text-nexus-neon font-mono text-xs z-[200]">
+    <div id="copy-toast"
+        class="glass-morphism px-6 py-3 rounded-lg border border-nexus-neon text-nexus-neon font-mono text-xs z-[200]">
         E-mail copiado com sucesso!
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-[100] px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
+    <nav
+        class="fixed top-0 left-0 right-0 z-[100] px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
         <div class="flex items-center space-x-6">
-        <a href="#home" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
-            <i data-lucide="zap" class="w-6 h-6"></i>
-            <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span class="text-nexus-neon">CH</span></span>
-        </a>
-            
-            <div class="flex items-center space-x-4 border-l border-white/10 pl-6 text-[9px] font-mono font-bold tracking-widest uppercase">
-                <button onclick="setLang('pt')" class="hover:text-nexus-neon transition-colors" id="btn-pt">PT-BR</button>
-                <button onclick="setLang('en')" class="opacity-50 hover:text-nexus-neon transition-colors" id="btn-en">Eng-EUA</button>
+            <a href="#home"
+                class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
+                <i data-lucide="zap" class="w-6 h-6"></i>
+                <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span
+                        class="text-nexus-neon">CH</span></span>
+            </a>
+
+            <div
+                class="flex items-center space-x-4 border-l border-white/10 pl-6 text-[9px] font-mono font-bold tracking-widest uppercase">
+                <button onclick="setLang('pt')" class="hover:text-nexus-neon transition-colors"
+                    id="btn-pt">PT-BR</button>
+                <button onclick="setLang('en')" class="opacity-50 hover:text-nexus-neon transition-colors"
+                    id="btn-en">Eng-EUA</button>
             </div>
         </div>
 
         <div class="hidden md:flex items-center space-x-8 text-[10px] font-mono tracking-widest uppercase font-bold">
             <a href="#home" class="hover:text-nexus-neon transition-colors" data-i18n="nav-home">Home</a>
             <a href="#about" class="hover:text-nexus-neon transition-colors" data-i18n="nav-about">Trajetória</a>
-            <a href="#arsenal" class="hover:text-nexus-neon transition-colors" data-i18n="nav-arsenal">Arsenal Técnico</a>
+            <a href="#arsenal" class="hover:text-nexus-neon transition-colors" data-i18n="nav-arsenal">Arsenal
+                Técnico</a>
             <a href="#docs" class="hover:text-nexus-neon transition-colors" data-i18n="nav-docs">Docs</a>
             <a href="#architecture" class="hover:text-nexus-neon transition-colors" data-i18n="nav-arch">Arquitetura</a>
-            <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer" class="px-5 py-2 bg-nexus-neon/10 border border-nexus-neon text-nexus-neon hover:bg-nexus-neon hover:text-nexus-dark transition-all duration-300 flex items-center gap-2 uppercase tracking-tighter italic">
-                CONTACT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3 h-3 fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer"
+                class="px-5 py-2 bg-nexus-neon/10 border border-nexus-neon text-nexus-neon hover:bg-nexus-neon hover:text-nexus-dark transition-all duration-300 flex items-center gap-2 uppercase tracking-tighter italic">
+                CONTACT <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3 h-3 fill-current">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
             </a>
         </div>
     </nav>
@@ -145,38 +169,58 @@
         <!-- Christian Felipe - Skills & Exp Section -->
         <section id="skills-exp" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/5">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-4 font-mono tracking-tighter uppercase text-white neon-text">Christian Felipe</h2>
-                <p class="text-nexus-neon font-mono text-[10px] uppercase tracking-[0.4em]">Skills & Exp | Senior Architect</p>
+                <h2 class="text-5xl font-bold mb-4 font-mono tracking-tighter uppercase text-white neon-text">Christian
+                    Felipe</h2>
+                <p class="text-nexus-neon font-mono text-[10px] uppercase tracking-[0.4em]">Skills & Exp | Senior
+                    Architect</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Competências -->
                 <div class="space-y-8">
                     <div class="glass-morphism p-8 border-l-2 border-nexus-neon h-fit">
-                        <h4 class="text-nexus-neon text-xs uppercase font-mono mb-8 tracking-widest italic">// Technical Arsenal</h4>
+                        <h4 class="text-nexus-neon text-xs uppercase font-mono mb-8 tracking-widest italic">// Technical
+                            Arsenal</h4>
                         <div class="space-y-6">
                             <div>
-                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">AI Orchestration & LLMs</p>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">AI Orchestration
+                                    & LLMs</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AGENTS IA</span>
-                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">LLM PROMPT ENG</span>
-                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AUTOMATION</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AGENTS
+                                        IA</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">LLM
+                                        PROMPT ENG</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AUTOMATION</span>
                                 </div>
                             </div>
                             <div>
-                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Critical Infrastructure</p>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Critical
+                                    Infrastructure</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">CLOUD AWS/AZURE</span>
-                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">LINUX SRE</span>
-                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">NETWORKING</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">CLOUD
+                                        AWS/AZURE</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">LINUX
+                                        SRE</span>
+                                    <span
+                                        class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">NETWORKING</span>
                                 </div>
                             </div>
                             <div>
-                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Data & Security</p>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Data & Security
+                                </p>
                                 <div class="flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">SQL AUDIT</span>
-                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">POSTGRESQL</span>
-                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">HARDENING</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">SQL
+                                        AUDIT</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">POSTGRESQL</span>
+                                    <span
+                                        class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">HARDENING</span>
                                 </div>
                             </div>
                         </div>
@@ -185,10 +229,15 @@
                     <!-- Contact Quick Access -->
                     <div class="glass-morphism p-8 border-l-2 border-white/10">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">Gateway:</span>
+                            <span
+                                class="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">Gateway:</span>
                             <div class="flex gap-4">
-                                <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" class="text-nexus-blue hover:text-nexus-neon transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                                <button onclick="copyEmail()" class="text-nexus-blue hover:text-nexus-neon transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></button>
+                                <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank"
+                                    class="text-nexus-blue hover:text-nexus-neon transition-colors"><i
+                                        data-lucide="linkedin" class="w-5 h-5"></i></a>
+                                <button onclick="copyEmail()"
+                                    class="text-nexus-blue hover:text-nexus-neon transition-colors"><i
+                                        data-lucide="mail" class="w-5 h-5"></i></button>
                             </div>
                         </div>
                     </div>
@@ -196,35 +245,58 @@
 
                 <!-- Experiências (Destaque Ampliado) -->
                 <div class="space-y-8">
-                    <div class="glass-morphism p-10 border-l-4 border-nexus-blue h-full shadow-[0_0_30px_rgba(0,210,255,0.1)]">
-                        <h4 class="text-nexus-blue text-sm uppercase font-mono mb-12 tracking-[0.3em] italic font-bold">// High Authority Professional Timeline</h4>
+                    <div
+                        class="glass-morphism p-10 border-l-4 border-nexus-blue h-full shadow-[0_0_30px_rgba(0,210,255,0.1)]">
+                        <h4 class="text-nexus-blue text-sm uppercase font-mono mb-12 tracking-[0.3em] italic font-bold">
+                            // High Authority Professional Timeline</h4>
                         <div class="space-y-12">
                             <div class="relative pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-neon shadow-[0_0_15px_#00ffff] ring-4 ring-nexus-neon/20"></div>
-                                <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">Locaweb Company</p>
-                                <p class="text-nexus-neon text-xs mb-4 font-mono italic font-bold tracking-widest">Mai 2020 - Dez 2025 | Analista de Infraestrutura SRE</p>
-                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Liderança técnica em infraestrutura Cloud e On-premise. Orquestração de serviços críticos com foco em alta disponibilidade e performance escalável.</p>
-                            </div>
-                            
-                            <div class="relative pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-blue shadow-[0_0_15px_#00d2ff] ring-4 ring-nexus-blue/20"></div>
-                                <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">Hospital Evangélico Mackenzie</p>
-                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Mar 2019 - Nov 2021 | Técnico em Informática</p>
-                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Gestão de infraestrutura crítica hospitalar. Sustentação de sistemas vitais e conectividade em cenários de alta pressão.</p>
+                                <div
+                                    class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-neon shadow-[0_0_15px_#00ffff] ring-4 ring-nexus-neon/20">
+                                </div>
+                                <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">Locaweb Company
+                                </p>
+                                <p class="text-nexus-neon text-xs mb-4 font-mono italic font-bold tracking-widest">Mai
+                                    2020 - Dez 2025 | Analista de Infraestrutura SRE</p>
+                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Liderança
+                                    técnica em infraestrutura Cloud e On-premise. Orquestração de serviços críticos com
+                                    foco em alta disponibilidade e performance escalável.</p>
                             </div>
 
                             <div class="relative pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5"></div>
+                                <div
+                                    class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-blue shadow-[0_0_15px_#00d2ff] ring-4 ring-nexus-blue/20">
+                                </div>
+                                <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">Hospital
+                                    Evangélico Mackenzie</p>
+                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Mar 2019 -
+                                    Nov 2021 | Técnico em Informática</p>
+                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Gestão de
+                                    infraestrutura crítica hospitalar. Sustentação de sistemas vitais e conectividade em
+                                    cenários de alta pressão.</p>
+                            </div>
+
+                            <div class="relative pl-10 border-l-2 border-white/10">
+                                <div
+                                    class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5">
+                                </div>
                                 <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">Quality IT</p>
-                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Dez 2018 - Mar 2020 | Analista de T.I</p>
-                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Especialista em infraestrutura corporativa e arquitetura de suporte N2/N3.</p>
+                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Dez 2018 -
+                                    Mar 2020 | Analista de T.I</p>
+                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Especialista em
+                                    infraestrutura corporativa e arquitetura de suporte N2/N3.</p>
                             </div>
 
                             <div class="relative pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5"></div>
+                                <div
+                                    class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5">
+                                </div>
                                 <p class="text-white text-lg font-black uppercase mb-2 tracking-tight">SYKES Brasil</p>
-                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Jan 2018 - Dez 2019 | Técnico de suporte (Dell)</p>
-                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Isolamento de falhas críticas e troubleshooting avançado para ecossistemas de hardware/software Dell.</p>
+                                <p class="text-nexus-blue text-xs mb-4 font-mono font-bold tracking-widest">Jan 2018 -
+                                    Dez 2019 | Técnico de suporte (Dell)</p>
+                                <p class="text-slate-400 text-sm leading-relaxed uppercase font-medium">Isolamento de
+                                    falhas críticas e troubleshooting avançado para ecossistemas de hardware/software
+                                    Dell.</p>
                             </div>
                         </div>
                     </div>
@@ -237,16 +309,21 @@
             <div class="parallax-bg absolute inset-0"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
             <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-10 font-mono tracking-tight underline decoration-nexus-neon decoration-1 underline-offset-8 uppercase" data-i18n="about-title">Trajetória & Visão</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-10 font-mono tracking-tight underline decoration-nexus-neon decoration-1 underline-offset-8 uppercase"
+                    data-i18n="about-title">Trajetória & Visão</h2>
                 <div class="glass-morphism p-10 text-lg leading-relaxed">
                     <p class="mb-6" data-i18n="about-p1">
-                        Iniciei no ecossistema de TI aos 16 anos. São **14 anos de evolução contínua**, passando por todas as camadas de infraestrutura e desenvolvimento crítico. Recentemente, consolidei um marco de 1,4 milhão de linhas de código verificadas em projetos core, demonstrando um compromisso absoluto com a qualidade e a volumetria técnica.
+                        Iniciei no ecossistema de TI aos 16 anos. São **14 anos de evolução contínua**, passando por
+                        todas as camadas de infraestrutura e desenvolvimento crítico. Recentemente, consolidei um marco
+                        de 1,4 milhão de linhas de código verificadas em projetos core, demonstrando um compromisso
+                        absoluto com a qualidade e a volumetria técnica.
                     </p>
                     <p class="mb-6 font-bold text-nexus-neon" data-i18n="about-p2">
                         VIVENCIA Framework Integration | IA Immersion
                     </p>
                     <p data-i18n="about-p3">
-                        Minha abordagem utiliza o framework **VIVENCIA**: Onde cada linha de código é uma peça estratégica de uma arquitetura resiliente.
+                        Minha abordagem utiliza o framework **VIVENCIA**: Onde cada linha de código é uma peça
+                        estratégica de uma arquitetura resiliente.
                     </p>
                 </div>
             </div>
@@ -256,42 +333,67 @@
         <section id="home" class="min-h-screen flex items-center pt-20 px-8 max-w-7xl mx-auto">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="flex-1 text-left">
-                    <div class="inline-block px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[10px] font-mono tracking-[0.2em] uppercase mb-6 rounded-sm" data-i18n="hero-tag">
+                    <div class="inline-block px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[10px] font-mono tracking-[0.2em] uppercase mb-6 rounded-sm"
+                        data-i18n="hero-tag">
                         Level 14 Architect | Immersive AI Spec
                     </div>
                     <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tight leading-tight text-white">
                         Orchestrating <br>
                         <span class="text-nexus-neon neon-text" data-i18n="hero-title">Cognitive Intelligence.</span>
                     </h1>
-                    <p class="text-slate-500 text-xl leading-relaxed mb-12 border-l-2 border-nexus-neon/50 pl-8 max-w-2xl" data-i18n="hero-desc">
-                        Especialista em construir a camada de inteligência para ecossistemas SaaS de alta performance. 14 anos de base tech + imersão total em IA.
+                    <p class="text-slate-500 text-xl leading-relaxed mb-12 border-l-2 border-nexus-neon/50 pl-8 max-w-2xl"
+                        data-i18n="hero-desc">
+                        Especialista em construir a camada de inteligência para ecossistemas SaaS de alta performance.
+                        14 anos de base tech + imersão total em IA.
                     </p>
                     <div class="flex items-center gap-6">
-                        <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-nexus-blue text-nexus-dark rounded-lg flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.4)] hover:scale-110 transition-transform overflow-hidden p-3" title="LinkedIn">
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-14 h-14 bg-nexus-blue text-nexus-dark rounded-lg flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.4)] hover:scale-110 transition-transform overflow-hidden p-3"
+                            title="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                class="w-full h-full fill-current">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
                         </a>
-                        <button onclick="copyEmail()" class="w-14 h-14 glass-morphism rounded-lg flex items-center justify-center border border-slate-800 hover:border-nexus-neon text-nexus-neon transition-all p-3" title="Click to Copy Email">
-                             <svg viewBox="0 0 24 24" class="w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.075 3 1.5 3H3.9l8.1 5.813L20.1 3h2.4c.425 0 .8.162 1.069.432.269.268.431.643.431 1.068z"/></svg>
+                        <button onclick="copyEmail()"
+                            class="w-14 h-14 glass-morphism rounded-lg flex items-center justify-center border border-slate-800 hover:border-nexus-neon text-nexus-neon transition-all p-3"
+                            title="Click to Copy Email">
+                            <svg viewBox="0 0 24 24" class="w-full h-full fill-current"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.075 3 1.5 3H3.9l8.1 5.813L20.1 3h2.4c.425 0 .8.162 1.069.432.269.268.431.643.431 1.068z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="flex-shrink-0 relative">
                     <div class="w-[320px] h-[450px] md:w-[450px] md:h-[550px] relative z-10">
-                        <div class="absolute inset-0 border border-nexus-neon/30 -translate-x-4 translate-y-4 rounded-xl"></div>
-                        <div id="carousel" class="w-full h-full glass-morphism overflow-hidden rounded-xl relative group">
-                            <img src="public/profile-setup.jpg" class="carousel-item active noir-filter w-full h-full object-cover" alt="Architect 1">
-                            <img src="public/img1.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 2">
-                            <img src="public/img2.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 3">
-                            <img src="public/img3.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 4">
-                            <img src="public/img4.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 5">
-                            
+                        <div
+                            class="absolute inset-0 border border-nexus-neon/30 -translate-x-4 translate-y-4 rounded-xl">
+                        </div>
+                        <div id="carousel"
+                            class="w-full h-full glass-morphism overflow-hidden rounded-xl relative group">
+                            <img src="public/profile-setup.jpg"
+                                class="carousel-item active noir-filter w-full h-full object-cover" alt="Architect 1">
+                            <img src="public/img1.jpg" class="carousel-item noir-filter w-full h-full object-cover"
+                                alt="Architect 2">
+                            <img src="public/img2.jpg" class="carousel-item noir-filter w-full h-full object-cover"
+                                alt="Architect 3">
+                            <img src="public/img3.jpg" class="carousel-item noir-filter w-full h-full object-cover"
+                                alt="Architect 4">
+                            <img src="public/img4.jpg" class="carousel-item noir-filter w-full h-full object-cover"
+                                alt="Architect 5">
+
                             <div class="absolute bottom-6 left-6 font-mono text-[10px] z-20">
                                 <div class="text-nexus-neon uppercase tracking-widest flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-nexus-neon rounded-full animate-pulse"></span> 
+                                    <span class="w-2 h-2 bg-nexus-neon rounded-full animate-pulse"></span>
                                     ID: ARCH-72-VIVENCIA
                                 </div>
-                                <div class="font-bold bg-black/40 px-2 uppercase tracking-tighter" data-i18n="hero-feed">Feed: Live Telemetry Sync</div>
+                                <div class="font-bold bg-black/40 px-2 uppercase tracking-tighter"
+                                    data-i18n="hero-feed">Feed: Live Telemetry Sync</div>
                             </div>
                         </div>
                     </div>
@@ -299,7 +401,7 @@
             </div>
         </section>
 
-        <!-- Technical Arsenal Section -->
+        <!-- Technical Arsenal Section (MERGED & ENHANCED) -->
         <section id="arsenal" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/5">
             <div class="text-center mb-20">
                 <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase" data-i18n="arsenal-title">Arsenal Técnico</h2>
@@ -316,6 +418,7 @@
                         <li>Autonomous Agents Architecture</li>
                         <li>RAG & Vector Search</li>
                         <li>Prompt Engineering Expert</li>
+                        <li class="text-nexus-neon">IA Automation Flows</li>
                     </ul>
                 </div>
                 <div class="glass-morphism p-8 border-b border-nexus-blue">
@@ -327,6 +430,7 @@
                         <li>Python (AI/ML Ecosystem)</li>
                         <li>Node.js / Bun / Fast API</li>
                         <li>Microservices Orchestration</li>
+                        <li class="text-nexus-blue">Rust (Learning Stage)</li>
                     </ul>
                 </div>
                 <div class="glass-morphism p-8 border-b border-nexus-neon">
@@ -334,21 +438,23 @@
                         <i data-lucide="cloud" class="w-4 h-4"></i> Infrastructure
                     </h3>
                     <ul class="space-y-3 font-mono text-[11px] uppercase tracking-tighter opacity-80">
-                        <li>Cloudflare Workers & Pages</li>
-                        <li>Supabase & PostgreSQL</li>
+                        <li>Cloud AWS / Azure / GCP</li>
+                        <li>Linux SRE / Shell Scripting</li>
                         <li>Docker & Containerization</li>
                         <li>GitHub Actions CI/CD</li>
+                        <li class="text-nexus-neon">Networking & Security</li>
                     </ul>
                 </div>
                 <div class="glass-morphism p-8 border-b border-nexus-blue">
                     <h3 class="text-nexus-blue font-mono text-xs mb-6 uppercase flex items-center gap-2 italic">
-                        <i data-lucide="layers" class="w-4 h-4"></i> Methodology
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Data & Audit
                     </h3>
                     <ul class="space-y-3 font-mono text-[11px] uppercase tracking-tighter opacity-80">
+                        <li>SQL Audit & Optimization</li>
+                        <li>PostgreSQL / Vector DBs</li>
+                        <li>System Hardening</li>
                         <li>VIVENCIA Framework</li>
-                        <li>Sectoral Synergy Integration</li>
-                        <li>FP&A Tech Strategy</li>
-                        <li>Autonomous Documentation</li>
+                        <li class="text-nexus-blue">Security Protocols</li>
                     </ul>
                 </div>
             </div>
@@ -357,8 +463,10 @@
         <!-- Technical Dossier -->
         <section id="architecture" class="py-32 px-8 max-w-7xl mx-auto">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase" data-i18n="arch-title">Arquitetura Nexus</h2>
-                <p class="text-slate-500 font-mono text-[10px] uppercase tracking-[0.4em]" data-i18n="arch-tag">Intelligence Orchestration Logic</p>
+                <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase" data-i18n="arch-title">
+                    Arquitetura Nexus</h2>
+                <p class="text-slate-500 font-mono text-[10px] uppercase tracking-[0.4em]" data-i18n="arch-tag">
+                    Intelligence Orchestration Logic</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 text-left">
@@ -368,16 +476,22 @@
                     </h3>
                     <div class="space-y-6">
                         <div class="border-l-2 border-nexus-blue/30 pl-6">
-                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">Gemini 1.5 Flash</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">Interação em tempo real e baixa latência.</p>
+                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">Gemini
+                                1.5 Flash</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Interação em tempo real e baixa latência.
+                            </p>
                         </div>
                         <div class="border-l-2 border-nexus-blue/30 pl-6">
-                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">GPT-4o Mini</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">Validação de contexto e gestão de tokens.</p>
+                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">GPT-4o
+                                Mini</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Validação de contexto e gestão de tokens.
+                            </p>
                         </div>
                         <div class="border-l-2 border-nexus-blue/30 pl-6">
-                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">Groq Llama3</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">Deep reasoning e orquestração de agentes.</p>
+                            <h4 class="text-sm font-bold text-nexus-blue uppercase mb-2 italic tracking-tighter">Groq
+                                Llama3</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Deep reasoning e orquestração de agentes.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -387,10 +501,16 @@
                         <h3 class="text-xl font-bold mb-8 text-nexus-neon font-mono flex items-center uppercase italic">
                             <i data-lucide="music" class="w-5 h-5 mr-3"></i> Focus Arsenal
                         </h3>
-                        <p class="text-[10px] text-slate-500 font-mono mb-6 uppercase tracking-widest italic tracking-tighter">Architect's Deep Work Frequency</p>
+                        <p
+                            class="text-[10px] text-slate-500 font-mono mb-6 uppercase tracking-widest italic tracking-tighter">
+                            Architect's Deep Work Frequency</p>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-white/10">
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6tmRboY4Bzb1Teq4iend8Y?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px"
+                            src="https://open.spotify.com/embed/playlist/6tmRboY4Bzb1Teq4iend8Y?utm_source=generator&theme=0"
+                            width="100%" height="152" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -406,15 +526,21 @@
                 <div class="glass-morphism p-8 flex flex-col gap-6 group hover:border-nexus-neon transition-all">
                     <div class="flex items-center gap-8">
                         <div class="w-24 h-24 rounded-lg overflow-hidden border border-nexus-blue/30">
-                            <img src="public/profile-landscape.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="chrisdesenv">
+                            <img src="public/profile-landscape.jpg"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                                alt="chrisdesenv">
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-2xl font-bold mb-1 group-hover:text-nexus-neon transition-colors">chrisdesenv</h3>
-                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-tighter italic">SaaS Architecture & Cloud Ops Architect</p>
-                            <a href="https://github.com/chrisdesenv" target="_blank" rel="noopener noreferrer" class="text-[10px] text-nexus-blue hover:underline font-mono uppercase tracking-widest">View Profile _</a>
+                            <h3 class="text-2xl font-bold mb-1 group-hover:text-nexus-neon transition-colors">
+                                chrisdesenv</h3>
+                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-tighter italic">SaaS
+                                Architecture & Cloud Ops Architect</p>
+                            <a href="https://github.com/chrisdesenv" target="_blank" rel="noopener noreferrer"
+                                class="text-[10px] text-nexus-blue hover:underline font-mono uppercase tracking-widest">View
+                                Profile _</a>
                         </div>
                     </div>
-                    
+
                     <!-- Performance Telemetry -->
                     <div class="grid grid-cols-2 gap-y-6 border-t border-white/5 pt-6 font-mono">
                         <div class="space-y-1">
@@ -441,7 +567,9 @@
                                 <span class="text-[10px] text-nexus-neon font-bold">1,454,940 Lines of Code</span>
                             </div>
                             <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-gradient-to-r from-nexus-blue to-nexus-neon w-[100%] animate-pulse"></div>
+                                <div
+                                    class="h-full bg-gradient-to-r from-nexus-blue to-nexus-neon w-[100%] animate-pulse">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -451,15 +579,21 @@
                 <div class="glass-morphism p-8 flex flex-col gap-6 group hover:border-nexus-neon transition-all">
                     <div class="flex items-center gap-8">
                         <div class="w-24 h-24 rounded-lg overflow-hidden border border-nexus-blue/30">
-                            <img src="public/profile-setup.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" alt="devclutchero">
+                            <img src="public/profile-setup.jpg"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                                alt="devclutchero">
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-2xl font-bold mb-1 group-hover:text-nexus-neon transition-colors">devclutchero</h3>
-                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-tighter italic">AI Orchestration & Intelligence Specialist</p>
-                            <a href="https://github.com/devclutchero" target="_blank" rel="noopener noreferrer" class="text-[10px] text-nexus-blue hover:underline font-mono uppercase tracking-widest">View Profile _</a>
+                            <h3 class="text-2xl font-bold mb-1 group-hover:text-nexus-neon transition-colors">
+                                devclutchero</h3>
+                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-tighter italic">AI
+                                Orchestration & Intelligence Specialist</p>
+                            <a href="https://github.com/devclutchero" target="_blank" rel="noopener noreferrer"
+                                class="text-[10px] text-nexus-blue hover:underline font-mono uppercase tracking-widest">View
+                                Profile _</a>
                         </div>
                     </div>
-                    
+
                     <!-- Performance Telemetry -->
                     <div class="grid grid-cols-2 gap-y-6 border-t border-white/5 pt-6 font-mono">
                         <div class="space-y-1">
@@ -497,26 +631,32 @@
         <!-- Operational Documentation Section -->
         <section id="docs" class="py-32 px-8 max-w-7xl mx-auto">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase text-nexus-neon neon-text">Noxus Operational Manual</h2>
-                <p class="text-slate-500 font-mono text-[10px] uppercase tracking-[0.4em]">Core Commands & System Orchestration</p>
+                <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase text-nexus-neon neon-text">Noxus
+                    Operational Manual</h2>
+                <p class="text-slate-500 font-mono text-[10px] uppercase tracking-[0.4em]">Core Commands & System
+                    Orchestration</p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-8 glass-morphism p-1 rounded-xl overflow-hidden min-h-[600px]">
                 <!-- Sidebar Menu -->
                 <div class="w-full lg:w-72 bg-black/40 border-r border-white/5 p-6 flex flex-col gap-2">
-                    <button onclick="showDoc('os')" id="btn-doc-os" class="doc-tab-btn active flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                    <button onclick="showDoc('os')" id="btn-doc-os"
+                        class="doc-tab-btn active flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
                         <i data-lucide="monitor" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>CLI: OS & Terminal</span>
                     </button>
-                    <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                    <button onclick="showDoc('git')" id="btn-doc-git"
+                        class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
                         <i data-lucide="git-branch" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>Repo: Git Sync</span>
                     </button>
-                    <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                    <button onclick="showDoc('sql')" id="btn-doc-sql"
+                        class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
                         <i data-lucide="database" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>Query: SQL Audit</span>
                     </button>
-                    <button onclick="showDoc('infra')" id="btn-doc-infra" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                    <button onclick="showDoc('infra')" id="btn-doc-infra"
+                        class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
                         <i data-lucide="file-text" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>INFRA: Documentos</span>
                     </button>
@@ -531,134 +671,183 @@
                     </div>
 
                     <!-- OS Context -->
-                    <div id="doc-os" class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div id="doc-os"
+                        class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                         <div class="space-y-4">
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># Contexto: Sistema Operacional</h4>
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
+                                # Contexto: Sistema Operacional</h4>
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Liberar execução de scripts (Admin)</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Liberar execução
+                                        de scripts (Admin)</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
                                 </div>
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Verificar dependências instaladas</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git --version ; psql --version ; node -v</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Verificar
+                                        dependências instaladas</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git --version ; psql --version ; node -v</code>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Git Context (Hidden by default) -->
-                    <div id="doc-git" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div id="doc-git"
+                        class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                         <div class="space-y-4">
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># Contexto: Git & GitHub Sync</h4>
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
+                                # Contexto: Git & GitHub Sync</h4>
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Verificar status e sincronia</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git status ; git remote -v</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Verificar status
+                                        e sincronia</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git status ; git remote -v</code>
                                 </div>
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Comparar local com nuvem (Ahead/Behind)</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git fetch ; git log origin/main..main</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Comparar local
+                                        com nuvem (Ahead/Behind)</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git fetch ; git log origin/main..main</code>
                                 </div>
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Fluxo padrão de deploy</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git add . ; git commit -m 'Docs updated' ; git push</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Fluxo padrão de
+                                        deploy</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">> git add . ; git commit -m 'Docs updated' ; git push</code>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- SQL Context -->
-                    <div id="doc-sql" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div id="doc-sql"
+                        class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                         <div class="space-y-4">
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># Contexto: SQL & Database Audit</h4>
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
+                                # Contexto: SQL & Database Audit</h4>
                             <div class="space-y-6">
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Listar usuários e tabelas (Postgres CLI)</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> \du ; \dt ; \d [TABELA]</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Listar usuários
+                                        e tabelas (Postgres CLI)</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> \du ; \dt ; \d [TABELA]</code>
                                 </div>
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Buscar duplicatas em campos únicos</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> SELECT [COLUNA], COUNT(*) FROM [TABELA] GROUP BY [COLUNA] HAVING COUNT(*) > 1;</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Buscar
+                                        duplicatas em campos únicos</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> SELECT [COLUNA], COUNT(*) FROM [TABELA] GROUP BY [COLUNA] HAVING COUNT(*) > 1;</code>
                                 </div>
                                 <div>
-                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Contar total de tabelas públicas</p>
-                                    <code class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> SELECT count(*) FROM information_schema.tables WHERE table_schema = 'public';</code>
+                                    <p class="text-nexus-blue text-[10px] mb-2 uppercase opacity-70">// Contar total de
+                                        tabelas públicas</p>
+                                    <code
+                                        class="block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white">QUERY> SELECT count(*) FROM information_schema.tables WHERE table_schema = 'public';</code>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Infra/Docs Context -->
-                    <div id="doc-infra" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div id="doc-infra"
+                        class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                         <div class="space-y-4">
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># INFRA: Padrões de Propagação DNS (SLA Big Techs)</h4>
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
+                                # INFRA: Padrões de Propagação DNS (SLA Big Techs)</h4>
                             <div class="space-y-6 text-sm text-slate-300 leading-relaxed font-mono">
-                                <p class="text-nexus-blue text-[10px] uppercase opacity-70 mb-4">// Escopo de propagação global e latência</p>
-                                
+                                <p class="text-nexus-blue text-[10px] uppercase opacity-70 mb-4">// Escopo de propagação
+                                    global e latência</p>
+
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="p-4 border border-white/5 bg-white/5">
                                         <p class="text-nexus-neon mb-1">CLOUDFLARE</p>
                                         <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: ~24 HOURS</p>
-                                        <p class="text-xs">Rede Anycast permite propagação em minutos, mas a estabilidade total é garantida em 24h.</p>
+                                        <p class="text-xs">Rede Anycast permite propagação em minutos, mas a
+                                            estabilidade total é garantida em 24h.</p>
                                     </div>
                                     <div class="p-4 border border-white/5 bg-white/5">
                                         <p class="text-nexus-neon mb-1">GOOGLE CLOUD</p>
                                         <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: ~48 HOURS</p>
-                                        <p class="text-xs">Atualizações autoritativas em segundos, mas replicação para ISPs globais requer 2 dias.</p>
+                                        <p class="text-xs">Atualizações autoritativas em segundos, mas replicação para
+                                            ISPs globais requer 2 dias.</p>
                                     </div>
                                     <div class="p-4 border border-white/5 bg-white/5">
                                         <p class="text-nexus-neon mb-1">AWS ROUTE 53</p>
                                         <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: ~48 HOURS</p>
-                                        <p class="text-xs">Status INSYNC em 60s, porém o cache mundial de ISPs obedece à janela de 48h.</p>
+                                        <p class="text-xs">Status INSYNC em 60s, porém o cache mundial de ISPs obedece à
+                                            janela de 48h.</p>
                                     </div>
                                     <div class="p-4 border border-white/5 bg-white/5">
                                         <p class="text-nexus-neon mb-1">AZURE / MSFT</p>
                                         <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: 48-72 HOURS</p>
-                                        <p class="text-xs">Margem conservadora para garantir que serviços como Office 365 não falhem.</p>
+                                        <p class="text-xs">Margem conservadora para garantir que serviços como Office
+                                            365 não falhem.</p>
                                     </div>
                                 </div>
 
                                 <div class="mt-6 p-4 border-l-2 border-nexus-blue bg-nexus-blue/5">
                                     <p class="text-nexus-blue text-[10px] uppercase mb-2"># MONITORING TIP</p>
-                                    <p class="text-xs italic">"Use 'nslookup -type=ns domain' para verificar se os nameservers já foram atualizados no seu ISP local."</p>
+                                    <p class="text-xs italic">"Use 'nslookup -type=ns domain' para verificar se os
+                                        nameservers já foram atualizados no seu ISP local."</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Experiencias Context -->
-                    <div id="doc-exp" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div id="doc-exp"
+                        class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                         <div class="space-y-6">
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2"># Core Competencies [JARVIS_HIGHLIGHT_ACTIVE]</h4>
-                            
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
+                                # Core Competencies [JARVIS_HIGHLIGHT_ACTIVE]</h4>
+
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                <div class="p-3 border border-nexus-neon/30 bg-nexus-neon/5 rounded relative overflow-hidden group">
-                                    <div class="absolute inset-0 bg-gradient-to-r from-nexus-neon/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                                <div
+                                    class="p-3 border border-nexus-neon/30 bg-nexus-neon/5 rounded relative overflow-hidden group">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-nexus-neon/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000">
+                                    </div>
                                     <p class="text-[10px] font-mono text-nexus-neon uppercase">LLM / AI AGENTS</p>
                                 </div>
-                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                <div
+                                    class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
                                     <p class="text-[10px] font-mono text-nexus-blue uppercase">CRITICAL INFRA</p>
                                 </div>
-                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                <div
+                                    class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
                                     <p class="text-[10px] font-mono text-nexus-blue uppercase">SQL / DB AUDIT</p>
                                 </div>
-                                <div class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
+                                <div
+                                    class="p-3 border border-nexus-blue/30 bg-nexus-blue/5 rounded relative overflow-hidden group">
                                     <p class="text-[10px] font-mono text-nexus-blue uppercase">LINUX / TERMINAL</p>
                                 </div>
                             </div>
 
-                            <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 pt-4"># Profissional Timeline</h4>
-                            
+                            <h4
+                                class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 pt-4">
+                                # Profissional Timeline</h4>
+
                             <div class="space-y-6 font-mono">
                                 <div class="border-l-2 border-nexus-blue pl-4 py-1">
                                     <div class="flex justify-between items-start mb-1">
-                                        <p class="text-white text-xs uppercase font-bold">HOSPITAL EVANGÉLICO MACKENZIE</p>
+                                        <p class="text-white text-xs uppercase font-bold">HOSPITAL EVANGÉLICO MACKENZIE
+                                        </p>
                                         <p class="text-nexus-blue text-[9px]">MAR 2019 - NOV 2021</p>
                                     </div>
-                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico em Informática (Front-line COVID UTIs)</p>
-                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Montagem de 8 UTIs COVID e migração de serviços vitais.</p>
-                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Suporte in loco N1-N2 para sistemas e redes hospitalares.</p>
+                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico em Informática (Front-line
+                                        COVID UTIs)</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Montagem de 8 UTIs
+                                        COVID e migração de serviços vitais.</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Suporte in loco
+                                        N1-N2 para sistemas e redes hospitalares.</p>
                                 </div>
 
                                 <div class="border-l-2 border-white/10 pl-4 py-1">
@@ -667,7 +856,8 @@
                                         <p class="text-nexus-blue text-[9px]">DEZ 2018 - MAR 2019</p>
                                     </div>
                                     <p class="text-slate-400 text-[10px] mb-2 italic">Analista de T.I</p>
-                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Foco em infraestrutura corporativa e suporte especializado.</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Foco em
+                                        infraestrutura corporativa e suporte especializado.</p>
                                 </div>
 
                                 <div class="border-l-2 border-white/10 pl-4 py-1">
@@ -675,16 +865,18 @@
                                         <p class="text-white text-xs uppercase font-bold">SYKES BRASIL</p>
                                         <p class="text-nexus-blue text-[9px]">JAN 2018 - DEZ 2019</p>
                                     </div>
-                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico de Suporte (Dell Brasil Level OSRI)</p>
-                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Troubleshooting avançado e isolamento de falhas Windows 10.</p>
+                                    <p class="text-slate-400 text-[10px] mb-2 italic">Técnico de Suporte (Dell Brasil
+                                        Level OSRI)</p>
+                                    <p class="text-slate-500 text-[9px] leading-relaxed uppercase">• Troubleshooting
+                                        avançado e isolamento de falhas Windows 10.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
         </section>
 
@@ -692,15 +884,20 @@
         <section id="focus" class="py-32 px-8 max-w-7xl mx-auto">
 
             <div class="glass-morphism p-12 border-l-4 border-nexus-neon relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-8 text-nexus-neon/10 group-hover:text-nexus-neon/20 transition-colors">
+                <div
+                    class="absolute top-0 right-0 p-8 text-nexus-neon/10 group-hover:text-nexus-neon/20 transition-colors">
                     <i data-lucide="target" class="w-64 h-64 -mr-20 -mt-20"></i>
                 </div>
                 <div class="relative z-10 text-left">
-                    <h2 class="text-3xl font-bold mb-8 font-mono tracking-tighter uppercase text-nexus-neon italic" data-i18n="focus-title">Objetivo Estratégico</h2>
+                    <h2 class="text-3xl font-bold mb-8 font-mono tracking-tighter uppercase text-nexus-neon italic"
+                        data-i18n="focus-title">Objetivo Estratégico</h2>
                     <p class="text-2xl md:text-3xl font-light leading-relaxed mb-8 italic" data-i18n="focus-content">
-                        "Estou disposto a trabalhar e desenvolver para empresas do ramo privado que tenham necessidade de integração e criação de LLMs e Agentes. Quero atuar em cargos diretamente envolvidos com IA, seguindo ordens e protocolos para entregar resultados sem limites."
+                        "Estou disposto a trabalhar e desenvolver para empresas do ramo privado que tenham necessidade
+                        de integração e criação de LLMs e Agentes. Quero atuar em cargos diretamente envolvidos com IA,
+                        seguindo ordens e protocolos para entregar resultados sem limites."
                     </p>
-                    <div class="flex items-center gap-4 text-nexus-blue font-mono text-[10px] uppercase tracking-widest">
+                    <div
+                        class="flex items-center gap-4 text-nexus-blue font-mono text-[10px] uppercase tracking-widest">
                         <span class="w-8 h-[1px] bg-nexus-blue"></span>
                         <span data-i18n="focus-tag">Compromisso com Excelência no Setor Privado</span>
                     </div>
@@ -712,37 +909,53 @@
         <section class="py-32 px-8 max-w-4xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-8 neon-text uppercase tracking-tighter italic">Connect with the Future</h2>
             <div class="glass-morphism p-12 space-y-8">
-                <p class="text-slate-500 text-lg italic tracking-tight leading-relaxed" data-i18n="cta-desc">"Estou pronto para levar a sua empresa ao próximo nível de automação e sinergia tecnológica."</p>
-                
+                <p class="text-slate-500 text-lg italic tracking-tight leading-relaxed" data-i18n="cta-desc">"Estou
+                    pronto para levar a sua empresa ao próximo nível de automação e sinergia tecnológica."</p>
+
                 <div class="flex flex-col items-center gap-4">
                     <!-- Preferential Contact Label -->
-                    <span class="text-[9px] font-mono tracking-[0.5em] text-nexus-neon uppercase opacity-70 animate-pulse">
-                        > PREFERENTIAL CONTACT GATEWAY <
-                    </span>
-                    
-                    <!-- Botão LinkedIn Contato Principal (CAMPO AZUL) -->
-                    <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer" class="px-16 py-6 bg-nexus-blue text-nexus-dark font-black rounded shadow-[0_0_35px_rgba(0,210,255,0.4)] transition-all flex items-center gap-4 hover:scale-105 uppercase italic tracking-widest border-2 border-nexus-neon/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg> 
-                        CONTACT
-                    </a>
+                    <span
+                        class="text-[9px] font-mono tracking-[0.5em] text-nexus-neon uppercase opacity-70 animate-pulse">
+                        > PREFERENTIAL CONTACT GATEWAY < </span>
+
+                            <!-- Botão LinkedIn Contato Principal (CAMPO AZUL) -->
+                            <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="px-16 py-6 bg-nexus-blue text-nexus-dark font-black rounded shadow-[0_0_35px_rgba(0,210,255,0.4)] transition-all flex items-center gap-4 hover:scale-105 uppercase italic tracking-widest border-2 border-nexus-neon/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    class="w-6 h-6 fill-current">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                                CONTACT
+                            </a>
                 </div>
 
                 <!-- Bottom Icons (Gmail & Instagram) -->
                 <div class="flex gap-16 items-center justify-center pt-8 border-t border-white/5">
                     <!-- GMAIL LOGO -->
-                    <button onclick="copyEmail()" class="hover:text-nexus-neon transition-all hover:scale-125" title="Copy Gmail">
-                        <svg viewBox="0 0 24 24" class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.075 3 1.5 3H3.9l8.1 5.813L20.1 3h2.4c.425 0 .8.162 1.069.432.269.268.431.643.431 1.068z"/></svg>
+                    <button onclick="copyEmail()" class="hover:text-nexus-neon transition-all hover:scale-125"
+                        title="Copy Gmail">
+                        <svg viewBox="0 0 24 24" class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.075 3 1.5 3H3.9l8.1 5.813L20.1 3h2.4c.425 0 .8.162 1.069.432.269.268.431.643.431 1.068z" />
+                        </svg>
                     </button>
                     <!-- INSTAGRAM LOGO -->
-                    <a href="https://www.instagram.com/clutcherofps" target="_blank" rel="noopener noreferrer" class="hover:text-nexus-neon transition-all hover:scale-125" title="Instagram">
-                        <svg viewBox="0 0 24 24" class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4.01 4.01 0 110-8.02 4.01 4.01 0 010 8.02zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+                    <a href="https://www.instagram.com/clutcherofps" target="_blank" rel="noopener noreferrer"
+                        class="hover:text-nexus-neon transition-all hover:scale-125" title="Instagram">
+                        <svg viewBox="0 0 24 24" class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4.01 4.01 0 110-8.02 4.01 4.01 0 010 8.02zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                        </svg>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
+    <footer
+        class="py-20 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
         &copy; 2026 Noxus Architectural Intelligence | All Rights Reserved
     </footer>
 
@@ -810,16 +1023,17 @@
             document.querySelectorAll('.doc-content').forEach(el => el.classList.add('hidden'));
             // Remover 'active' de todos os botões
             document.querySelectorAll('.doc-tab-btn').forEach(el => el.classList.remove('active', 'border-nexus-neon', 'bg-nexus-neon/10'));
-            
+
             // Mostrar o selecionado
             document.getElementById(`doc-${context}`).classList.remove('hidden');
             // Ativar o botão
             const btn = document.getElementById(`btn-doc-${context}`);
             btn.classList.add('active', 'border-nexus-neon', 'bg-nexus-neon/10');
         }
-        
+
         // Inicializar o primeiro botão
         showDoc('os');
     </script>
 </body>
+
 </html>
