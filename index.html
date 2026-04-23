@@ -143,55 +143,52 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex flex-col items-center justify-center relative px-8 py-32">
-            <div class="absolute inset-0 bg-gradient-to-b from-nexus-neon/5 via-transparent to-transparent"></div>
-            
-            <div class="relative z-10 text-center max-w-5xl">
-                <!-- Top Branding -->
-                <div class="mb-6 animate-in fade-in slide-in-from-top-4 duration-1000">
-                    <h1 class="text-6xl md:text-8xl font-black tracking-tighter uppercase text-white neon-text mb-4">Christian Felipe</h1>
-                    
-                    <!-- Direct Contacts Gateway -->
-                    <div class="flex flex-wrap justify-center gap-6 mb-12 opacity-80">
-                        <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] hover:text-nexus-neon transition-colors">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+        <section id="home" class="min-h-screen flex items-center pt-20 px-8 max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 text-left">
+                    <div class="inline-block px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[10px] font-mono tracking-[0.2em] uppercase mb-6 rounded-sm" data-i18n="hero-tag">
+                        Level 14 Architect | Immersive AI Spec
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tight leading-tight text-white">
+                        Orchestrating <br>
+                        <span class="text-nexus-neon neon-text" data-i18n="hero-title">Cognitive Intelligence.</span>
+                    </h1>
+                    <p class="text-slate-500 text-xl leading-relaxed mb-12 border-l-2 border-nexus-neon/50 pl-8 max-w-2xl" data-i18n="hero-desc">
+                        Especialista em construir a camada de inteligência para ecossistemas SaaS de alta performance. 14 anos de base tech + imersão total em IA.
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-nexus-blue text-nexus-dark rounded-lg flex items-center justify-center shadow-[0_0_20px_rgba(0,210,255,0.4)] hover:scale-110 transition-transform overflow-hidden p-3" title="LinkedIn">
+                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full h-full fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        <button onclick="copyEmail()" class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] hover:text-nexus-neon transition-colors">
-                            <i data-lucide="mail" class="w-4 h-4"></i> Email
-                        </a>
-                        <a href="https://www.instagram.com/christian.felipe.cf/" target="_blank" class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] hover:text-nexus-neon transition-colors">
-                            <i data-lucide="instagram" class="w-4 h-4"></i> Instagram
-                        </a>
+                        <button onclick="copyEmail()" class="w-14 h-14 glass-morphism rounded-lg flex items-center justify-center border border-slate-800 hover:border-nexus-neon text-nexus-neon transition-all p-3" title="Click to Copy Email">
+                             <svg viewBox="0 0 24 24" class="w-full h-full fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.65 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.075 3 1.5 3H3.9l8.1 5.813L20.1 3h2.4c.425 0 .8.162 1.069.432.269.268.431.643.431 1.068z"/></svg>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Vision / About -->
-                <div class="glass-morphism p-8 md:p-12 mb-16 text-left border-l-4 border-nexus-neon animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                    <p class="text-lg md:text-xl leading-relaxed text-slate-300 italic font-light">
-                        "Iniciei no ecossistema de TI aos 16 anos. São **14 anos de evolução contínua**, passando por todas as camadas de infraestrutura e desenvolvimento crítico. Recentemente, consolidei um marco de 1,4 milhão de linhas de código verificadas em projetos core, demonstrando um compromisso absoluto com a qualidade e a volumetria técnica."
-                    </p>
-                    <div class="mt-6 flex items-center gap-4 text-nexus-blue font-mono text-[10px] uppercase tracking-widest">
-                        <span class="w-8 h-[1px] bg-nexus-blue"></span>
-                        <span>VIVENCIA Framework Integration | IA Immersion</span>
+                
+                <div class="flex-shrink-0 relative">
+                    <div class="w-[320px] h-[450px] md:w-[450px] md:h-[550px] relative z-10">
+                        <div class="absolute inset-0 border border-nexus-neon/30 -translate-x-4 translate-y-4 rounded-xl"></div>
+                        <div id="carousel" class="w-full h-full glass-morphism overflow-hidden rounded-xl relative group">
+                            <img src="public/profile-setup.jpg" class="carousel-item active noir-filter w-full h-full object-cover" alt="Architect 1">
+                            <img src="public/img1.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 2">
+                            <img src="public/img2.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 3">
+                            <img src="public/img3.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 4">
+                            <img src="public/img4.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 5">
+                            
+                            <div class="absolute bottom-6 left-6 font-mono text-[10px] z-20">
+                                <div class="text-nexus-neon uppercase tracking-widest flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-nexus-neon rounded-full animate-pulse"></span> 
+                                    ID: ARCH-72-VIVENCIA
+                                </div>
+                                <div class="font-bold bg-black/40 px-2 uppercase tracking-tighter" data-i18n="hero-feed">Feed: Live Telemetry Sync</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Core Headline -->
-                <div class="space-y-4 animate-in fade-in zoom-in duration-1000 delay-500">
-                    <h2 class="text-4xl md:text-6xl font-bold tracking-tighter uppercase italic">
-                        Orchestrating <span class="text-nexus-neon">Cognitive Intelligence.</span>
-                    </h2>
-                    <p class="text-slate-400 font-mono text-sm uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
-                        Especialista em construir a camada de inteligência para ecossistemas SaaS de alta performance. 
-                        <span class="text-white">14 anos de base tech + imersão total em IA.</span>
-                    </p>
-                </div>
-            </div>
-
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
-                <i data-lucide="chevron-down" class="w-6 h-6"></i>
             </div>
         </section>
+
         <!-- Technical Arsenal Section -->
         <section id="arsenal" class="py-32 px-8 max-w-7xl mx-auto">
             <div class="text-center mb-20">
@@ -247,67 +244,23 @@
             </div>
         </section>
 
-        <!-- Christian Felipe - Skills & Exp Section -->
-        <section id="skills-exp" class="py-32 px-8 max-w-7xl mx-auto border-t border-white/5">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-4 font-mono tracking-tighter uppercase text-white neon-text">Skills & Experiência</h2>
-                <p class="text-nexus-neon font-mono text-[10px] uppercase tracking-[0.4em]">Professional Mastery & Timeline</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Competências -->
-                <div class="glass-morphism p-8 border-l-2 border-nexus-neon h-full">
-                    <h4 class="text-nexus-neon text-xs uppercase font-mono mb-8 tracking-widest italic">// Technical Arsenal [HUD_ACTIVE]</h4>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">AI Orchestration & LLMs</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AGENTS IA</span>
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">LLM PROMPT ENG</span>
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">RAG & VECTORS</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">SRE & Cloud Ops</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">AWS / AZURE</span>
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">VEEAM BACKUP</span>
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">ZABBIX / GRAFANA</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Infra & OS</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">WINDOWS SERVER 2019</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">LINUX HARDENING</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">NETWORKING</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experiências -->
-                <div class="glass-morphism p-8 border-l-2 border-nexus-blue h-full">
-                    <h4 class="text-nexus-blue text-xs uppercase font-mono mb-8 tracking-widest italic">// Professional Timeline</h4>
-                    <div class="space-y-8">
-                        <div class="relative pl-6 border-l-2 border-nexus-neon">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-neon shadow-[0_0_10px_rgba(0,255,255,0.5)]"></div>
-                            <p class="text-white text-[11px] font-bold uppercase mb-1">Locaweb Company</p>
-                            <p class="text-nexus-neon text-[9px] mb-2 font-mono italic tracking-widest">MAI 2020 - DEZ 2025 | Analista de Infraestrutura SRE</p>
-                            <p class="text-slate-400 text-[10px] leading-relaxed uppercase">• Gestão de Infraestrutura Cloud e On-premise.</p>
-                            <p class="text-slate-400 text-[10px] leading-relaxed uppercase">• Atendimento especializado e monitoramento proativo.</p>
-                        </div>
-                        <div class="relative pl-6 border-l border-white/10">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
-                            <p class="text-white text-[11px] font-bold uppercase mb-1">Hospital Evangélico Mackenzie</p>
-                            <p class="text-nexus-blue text-[9px] mb-2 font-mono">2019 - 2021 | Técnico em Informática</p>
-                        </div>
-                        <div class="relative pl-6 border-l border-white/10">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
-                            <p class="text-white text-[11px] font-bold uppercase mb-1">Quality IT</p>
-                            <p class="text-nexus-blue text-[9px] mb-2 font-mono">2018 - 2019 | Analista de T.I</p>
-                        </div>
-                    </div>
+        <!-- Trajetória Section -->
+        <section id="about" class="relative min-h-[80vh] flex items-center overflow-hidden py-32">
+            <div class="parallax-bg absolute inset-0"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-10 font-mono tracking-tight underline decoration-nexus-neon decoration-1 underline-offset-8 uppercase" data-i18n="about-title">Trajetória & Visão</h2>
+                <div class="glass-morphism p-10 text-lg leading-relaxed">
+                    <h3 class="text-2xl font-bold mb-6 text-nexus-neon font-mono uppercase italic tracking-tighter">Portfolio Vitae Christian Felipe</h3>
+                    <p class="mb-6" data-i18n="about-p1">
+                        Iniciei no ecossistema de TI aos 16 anos. São **14 anos de evolução contínua**, passando por todas as camadas de infraestrutura e desenvolvimento crítico. Recentemente, consolidei um marco de **1,4 milhão de linhas de código** verificadas em projetos core, demonstrando um compromisso absoluto com a qualidade e a volumetria técnica.
+                    </p>
+                    <p class="mb-6 font-bold text-nexus-blue uppercase tracking-widest text-xs">
+                        VIVENCIA Framework Integration | IA Immersion
+                    </p>
+                    <p data-i18n="about-p3">
+                        Minha abordagem utiliza o framework **VIVENCIA**: Onde cada linha de código é uma peça estratégica de uma arquitetura resiliente.
+                    </p>
                 </div>
             </div>
         </section>
@@ -351,32 +304,27 @@
                     </div>
                 </div>
 
-                    <!-- Experiências -->
+                <!-- Experiências -->
                 <div class="glass-morphism p-8 border-l-2 border-nexus-blue h-full">
                     <h4 class="text-nexus-blue text-xs uppercase font-mono mb-8 tracking-widest italic">// Professional Timeline</h4>
                     <div class="space-y-8">
-                        <div class="relative pl-6 border-l-2 border-nexus-neon">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-neon shadow-[0_0_10px_rgba(0,255,255,0.5)]"></div>
-                            <p class="text-white text-[11px] font-bold uppercase mb-1">Locaweb Company</p>
-                            <p class="text-nexus-neon text-[9px] mb-2 font-mono italic tracking-widest">MAI 2020 - DEZ 2025 | Analista de Infraestrutura SRE</p>
-                            <p class="text-slate-400 text-[10px] leading-relaxed uppercase">• Gestão de Infraestrutura Cloud (AWS/ECS) e On-premise.</p>
-                            <p class="text-slate-400 text-[10px] leading-relaxed uppercase">• Monitoramento Proativo (Zabbix/Grafana) e Backup (VEEAM).</p>
-                        </div>
                         <div class="relative pl-6 border-l border-white/10">
-                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
+                            <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-nexus-blue"></div>
                             <p class="text-white text-[11px] font-bold uppercase mb-1">Hospital Evangélico Mackenzie</p>
                             <p class="text-nexus-blue text-[9px] mb-2 font-mono">2019 - 2021 | Técnico em Informática</p>
-                            <p class="text-slate-500 text-[10px] leading-relaxed uppercase">• Orquestração de infraestrutura hospitalar e UTIs COVID.</p>
+                            <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Orquestração de infraestrutura crítica e front-line de sistemas hospitalares.</p>
                         </div>
                         <div class="relative pl-6 border-l border-white/10">
                             <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
                             <p class="text-white text-[11px] font-bold uppercase mb-1">Quality IT</p>
                             <p class="text-nexus-blue text-[9px] mb-2 font-mono">2018 - 2019 | Analista de T.I</p>
+                            <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Foco em infraestrutura corporativa e suporte especializado.</p>
                         </div>
                         <div class="relative pl-6 border-l border-white/10">
                             <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
                             <p class="text-white text-[11px] font-bold uppercase mb-1">Sykes Brasil</p>
                             <p class="text-nexus-blue text-[9px] mb-2 font-mono">2018 - 2019 | Suporte Técnico Dell</p>
+                            <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Troubleshooting avançado e isolamento de falhas críticas.</p>
                         </div>
                     </div>
                 </div>
@@ -548,6 +496,10 @@
                     <button onclick="showDoc('infra')" id="btn-doc-infra" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
                         <i data-lucide="file-text" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
                         <span>INFRA: Documentos</span>
+                    </button>
+                    <button onclick="showDoc('exp')" id="btn-doc-exp" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
+                        <i data-lucide="award" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
+                        <span>Skills & Exp</span>
                     </button>
                 </div>
 
