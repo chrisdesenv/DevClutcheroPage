@@ -151,31 +151,93 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Competências -->
-                <div class="glass-morphism p-8 border-l-2 border-nexus-neon h-full w-full">
-                    <h4 class="text-nexus-neon text-xs uppercase font-mono mb-8 tracking-widest italic">// Technical Arsenal</h4>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">AI Orchestration & LLMs</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AGENTS IA</span>
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">LLM PROMPT ENG</span>
-                                <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AUTOMATION</span>
+                <div class="space-y-8">
+                    <div class="glass-morphism p-8 border-l-2 border-nexus-neon h-fit">
+                        <h4 class="text-nexus-neon text-xs uppercase font-mono mb-8 tracking-widest italic">// Technical Arsenal</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">AI Orchestration & LLMs</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AGENTS IA</span>
+                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">LLM PROMPT ENG</span>
+                                    <span class="px-3 py-1 bg-nexus-neon/10 border border-nexus-neon/30 text-nexus-neon text-[9px] font-mono">AUTOMATION</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Critical Infrastructure</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">CLOUD AWS/AZURE</span>
+                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">LINUX SRE</span>
+                                    <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">NETWORKING</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Data & Security</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">SQL AUDIT</span>
+                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">POSTGRESQL</span>
+                                    <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">HARDENING</span>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Critical Infrastructure</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">CLOUD AWS/AZURE</span>
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">LINUX SRE</span>
-                                <span class="px-3 py-1 bg-nexus-blue/10 border border-nexus-blue/30 text-nexus-blue text-[9px] font-mono">NETWORKING</span>
+                    </div>
+
+                    <!-- Contact Quick Access -->
+                    <div class="glass-morphism p-8 border-l-2 border-white/10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono text-slate-500 uppercase tracking-widest italic">Gateway:</span>
+                            <div class="flex gap-4">
+                                <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" class="text-nexus-blue hover:text-nexus-neon transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                                <button onclick="copyEmail()" class="text-nexus-blue hover:text-nexus-neon transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></button>
                             </div>
                         </div>
-                        <div>
-                            <p class="text-white text-xs font-mono uppercase mb-3 tracking-tighter">Data & Security</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">SQL AUDIT</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">POSTGRESQL</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-400 text-[9px] font-mono">HARDENING</span>
+                    </div>
+                </div>
+
+                <!-- Experiências & Educação -->
+                <div class="space-y-8">
+                    <div class="glass-morphism p-8 border-l-2 border-nexus-blue">
+                        <h4 class="text-nexus-blue text-xs uppercase font-mono mb-8 tracking-widest italic">// Professional Timeline</h4>
+                        <div class="space-y-8">
+                            <div class="relative pl-6 border-l border-white/10">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-nexus-neon shadow-[0_0_10px_#00ffff]"></div>
+                                <p class="text-white text-[11px] font-bold uppercase mb-1">Locaweb Company</p>
+                                <p class="text-nexus-neon text-[9px] mb-2 font-mono italic">Mai 2020 - Dez 2025 | Analista de Infraestrutura SRE</p>
+                                <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Gestão de infraestrutura Cloud e On-premise. Atendimento ao usuário e sustentação crítica.</p>
+                            </div>
+                            <div class="relative pl-6 border-l border-white/10">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-nexus-blue"></div>
+                                <p class="text-white text-[11px] font-bold uppercase mb-1">Hospital Evangélico Mackenzie</p>
+                                <p class="text-nexus-blue text-[9px] mb-2 font-mono">Mar 2019 - Nov 2021 | Técnico em Informática</p>
+                                <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Operações críticas e suporte front-line em sistemas hospitalares.</p>
+                            </div>
+                            <div class="relative pl-6 border-l border-white/10">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
+                                <p class="text-white text-[11px] font-bold uppercase mb-1">Quality IT</p>
+                                <p class="text-nexus-blue text-[9px] mb-2 font-mono">Dez 2018 - Mar 2020 | Analista de T.I</p>
+                                <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Infraestrutura corporativa e suporte especializado.</p>
+                            </div>
+                            <div class="relative pl-6 border-l border-white/10">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/20"></div>
+                                <p class="text-white text-[11px] font-bold uppercase mb-1">SYKES Brasil</p>
+                                <p class="text-nexus-blue text-[9px] mb-2 font-mono">Jan 2018 - Dez 2019 | Técnico de suporte (Dell)</p>
+                                <p class="text-slate-500 text-[10px] leading-relaxed uppercase">Suporte técnico remoto para equipamentos Dell.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-morphism p-8 border-l-2 border-white/20">
+                        <h4 class="text-slate-400 text-xs uppercase font-mono mb-8 tracking-widest italic">// Academic Foundation</h4>
+                        <div class="space-y-6">
+                            <div class="relative pl-6 border-l border-white/5">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-nexus-blue/50"></div>
+                                <p class="text-white text-[10px] font-bold uppercase">Cisco Networking Academy</p>
+                                <p class="text-nexus-blue text-[8px] font-mono">2013 - 2015 | Information Technology</p>
+                            </div>
+                            <div class="relative pl-6 border-l border-white/5">
+                                <div class="absolute -left-[5px] top-0 w-2 h-2 rounded-full bg-white/10"></div>
+                                <p class="text-white text-[10px] font-bold uppercase">SENAI CIETEP/PR</p>
+                                <p class="text-nexus-blue text-[8px] font-mono">2014 | Hardware & IT Fundamentals</p>
                             </div>
                         </div>
                     </div>
