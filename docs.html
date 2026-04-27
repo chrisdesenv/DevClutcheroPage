@@ -174,37 +174,51 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                             <div class="tech-card border-nexus-blue">
-                                <h5 class="tech-title"><i data-lucide="edit-3" class="w-4 h-4"></i> VS Code & Visual Studio</h5>
+                                <h5 class="tech-title"><i data-lucide="atom" class="w-4 h-4"></i> Frontend (React & Vite)</h5>
                                 <p class="text-xs text-slate-400 leading-relaxed">
-                                    O **VS Code** é o editor tático. O **Visual Studio (Build Tools)** fornece os compiladores C++ essenciais para o build de dependências nativas de Node.js e Python.
+                                    O <strong>Vite</strong> proporciona o ambiente ultrarrápido para o desenvolvimento da interface moderna em <strong>React</strong>.
                                 </p>
                             </div>
                             <div class="tech-card border-nexus-neon">
-                                <h5 class="tech-title"><i data-lucide="box" class="w-4 h-4"></i> Motores de Execução</h5>
+                                <h5 class="tech-title"><i data-lucide="server" class="w-4 h-4"></i> Backend (FastAPI & Python)</h5>
                                 <p class="text-xs text-slate-400 leading-relaxed">
-                                    **Node.js (LTS)** e **Python 3.10+** são os motores que rodam o ecossistema de microsserviços e agentes de inteligência.
+                                    Motor de inteligência e orquestração de Agentes e LLMs, escrito em Python garantindo escalabilidade.
                                 </p>
                             </div>
                         </div>
 
                         <div class="space-y-6 pt-8">
-                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Configuração Inicial (Winget)</h4>
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Dependências Core Universais</h4>
                             
                             <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
-                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalação Universal de Dependências (PowerShell)</p>
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalação via Winget (Windows)</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS Microsoft.VisualStudio.2022.BuildTools -e</code>
-                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS Microsoft.VisualStudio.2022.BuildTools -e')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e</code>
+                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Build Frontend (React)</h4>
+
                             <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
-                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificação de Versões Instaladas</p>
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalar Pacotes e Iniciar Vite Server</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">node -v ; python --version ; git --version</code>
-                                    <button onclick="copyCommand('node -v ; python --version ; git --version')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">npm install ; npm run dev</code>
+                                    <button onclick="copyCommand('npm install ; npm run dev')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Build Backend (Python)</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ambiente Virtual, Pip Install e Uvicorn Server</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">python -m venv venv ; .\venv\Scripts\activate ; pip install -r requirements.txt ; uvicorn main:app --reload</code>
+                                    <button onclick="copyCommand('python -m venv venv ; .\\venv\\Scripts\\activate ; pip install -r requirements.txt ; uvicorn main:app --reload')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -320,21 +334,25 @@
                         </p>
 
                         <div class="space-y-6 mt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Controle Remoto (GitHub CLI)</h4>
+
                             <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
-                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Autenticação via GitHub CLI</p>
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Autenticação e Gestão de Issues/Pull Requests</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto">gh auth login</code>
-                                    <button onclick="copyCommand('gh auth login')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto">gh auth login ; gh repo view --web ; gh pr list ; gh issue list</code>
+                                    <button onclick="copyCommand('gh auth login ; gh repo view --web ; gh pr list ; gh issue list')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Auditoria Sentinel (Segurança Local)</h4>
+
                             <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
-                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Auditoria de Segurança: Verificar Arquivos Sensíveis</p>
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificar Vazamento de Dados Sensíveis e Executar Sentinela</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto">git ls-files .env ; git status -u</code>
-                                    <button onclick="copyCommand('git ls-files .env ; git status -u')" class="p-3 bg-nexus-blue/10 hover:bg-nexus-blue hover:text-nexus-dark text-nexus-blue border border-nexus-blue transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto">node scripts/sentinel_audit.js --env-only ; git ls-files .env ; git status -u</code>
+                                    <button onclick="copyCommand('node scripts/sentinel_audit.js --env-only ; git ls-files .env ; git status -u')" class="p-3 bg-nexus-blue/10 hover:bg-nexus-blue hover:text-nexus-dark text-nexus-blue border border-nexus-blue transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
