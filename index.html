@@ -476,7 +476,7 @@
                         <div class="space-y-1">
                             <span class="text-[8px] text-slate-400 uppercase">Repositories (Authenticated)</span>
                             <div class="flex items-end gap-2">
-                                <span class="text-xl font-bold text-nexus-neon">5</span>
+                                <span class="text-xl font-bold text-nexus-neon" data-github="repos-chris">5</span>
                                 <div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden mb-2">
                                     <div class="h-full bg-nexus-neon w-[100%]"></div>
                                 </div>
@@ -488,7 +488,7 @@
                                 <div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden mb-2">
                                     <div class="h-full bg-nexus-blue w-[100%]"></div>
                                 </div>
-                                <span class="text-xl font-bold text-nexus-blue">DEEP SYNC</span>
+                                <span class="text-xl font-bold text-nexus-blue" data-github="sync-chris">DEEP SYNC</span>
                             </div>
                         </div>
                         <div class="space-y-1 col-span-2">
@@ -529,7 +529,7 @@
                         <div class="space-y-1">
                             <span class="text-[8px] text-slate-400 uppercase">Repositories (Authenticated)</span>
                             <div class="flex items-end gap-2">
-                                <span class="text-xl font-bold text-nexus-neon">2</span>
+                                <span class="text-xl font-bold text-nexus-neon" data-github="repos">2</span>
                                 <div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden mb-2">
                                     <div class="h-full bg-nexus-neon w-[40%]"></div>
                                 </div>
@@ -541,7 +541,7 @@
                                 <div class="flex-1 h-1 bg-white/5 rounded-full overflow-hidden mb-2">
                                     <div class="h-full bg-nexus-blue w-[20%]"></div>
                                 </div>
-                                <span class="text-xl font-bold text-nexus-blue">VERIFIED</span>
+                                <span class="text-xl font-bold text-nexus-blue" data-github="sync">VERIFIED</span>
                             </div>
                         </div>
                         <div class="space-y-1 col-span-2">
@@ -742,6 +742,9 @@
             const btn = document.getElementById(`btn-doc-${context}`);
             btn.classList.add('active', 'border-nexus-neon', 'bg-nexus-neon/10');
         }
+
+        // Inicializar o primeiro botão
+        showDoc('os');
 
         // Inicializar o primeiro botão
         showDoc('os');
