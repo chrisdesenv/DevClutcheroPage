@@ -156,6 +156,28 @@
                     <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
                     <span class="font-mono text-xs uppercase tracking-widest">SQL: Auditoria de Dados</span>
                 </button>
+
+                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mt-6 mb-2 pl-4 italic">Fundamentos & Carreira</p>
+                <button onclick="showDoc('fundamentos')" id="btn-doc-fundamentos" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="book-open" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">WEB: Frontend & Backend</span>
+                </button>
+                <button onclick="showDoc('wsl')" id="btn-doc-wsl" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="monitor" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">WIN+WSL: Ambiente Base</span>
+                </button>
+                <button onclick="showDoc('docker')" id="btn-doc-docker" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="box" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">DOCKER: Containers</span>
+                </button>
+                <button onclick="showDoc('cicd')" id="btn-doc-cicd" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">CI/CD: Deploy Contínuo</span>
+                </button>
+                <button onclick="showDoc('dns')" id="btn-doc-dns" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="globe" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">DNS: Domínios & Riscos</span>
+                </button>
             </aside>
 
             <!-- Documentation Content -->
@@ -503,6 +525,274 @@
                                 <button onclick="copyCommand('EXPLAIN ANALYZE SELECT * FROM [TABLE_NAME];')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
                                     <i data-lucide="copy" class="w-4 h-4"></i>
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUNDAMENTOS: Frontend & Backend -->
+                <div id="doc-fundamentos" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🌐 Fundamentos: Como a Web Funciona</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Antes de escrever uma linha de código, entenda o mapa do território. Toda aplicação web moderna tem três camadas: o que o usuário vê (Frontend), o que processa a lógica (Backend) e onde os dados vivem (Banco de Dados).</p>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="monitor" class="w-4 h-4"></i> Frontend — O que o usuário VÊ</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Tudo que aparece na tela do navegador. Botões, formulários, animações, cores. É a "fachada" da aplicação.<br><strong>Tecnologias principais:</strong> HTML (estrutura), CSS (estilo), JavaScript (interatividade). Frameworks modernos: <strong>React</strong> (Meta), <strong>Vue</strong>, <strong>Angular</strong> (Google).<br><strong>No nosso stack:</strong> Usamos React + Vite — o ambiente de desenvolvimento mais rápido do mercado hoje.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="server" class="w-4 h-4"></i> Backend — O que o usuário NÃO vê</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> A "sala de máquinas". Processa as regras de negócio, autentica usuários, se comunica com o banco de dados e retorna respostas via API.<br><strong>Tecnologias principais:</strong> Python (FastAPI/Django), Node.js (Express), Java (Spring), Go.<br><strong>No nosso stack:</strong> Python + FastAPI — rápido, moderno e nativo para IA/LLMs.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="database" class="w-4 h-4"></i> Banco de Dados — Onde os dados VIVEM</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> O cofre da aplicação. Armazena tudo: usuários, pedidos, mensagens, configurações.<br><strong>Tipos:</strong><br>• <strong>Relacional (SQL):</strong> Dados organizados em tabelas com relações. Ex: PostgreSQL, MySQL, SQLite.<br>• <strong>Não-relacional (NoSQL):</strong> Dados flexíveis em documentos/JSON. Ex: MongoDB, Redis, Firebase.<br><strong>Regra de ouro:</strong> SQL para dados estruturados e relacionais. NoSQL para dados flexíveis e de alta escala.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="zap" class="w-4 h-4"></i> API — A ponte entre os mundos</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Application Programming Interface. É o "garçom" que leva o pedido do Frontend para o Backend e traz a resposta de volta.<br><strong>Padrão moderno:</strong> REST API usando HTTP (GET, POST, PUT, DELETE). O Frontend faz uma requisição, o Backend processa e retorna um JSON.<br><strong>Analogia:</strong> Você (usuário) faz o pedido, o garçom (API) leva para a cozinha (Backend), que busca os ingredientes no estoque (Banco de Dados) e volta com o prato pronto.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-nexus-blue/5 border-l-2 border-nexus-neon mt-4 text-xs text-slate-400">
+                            <strong>PRÓXIMO PASSO:</strong> Com os conceitos claros, vá para <button onclick="showDoc('wsl')" class="text-nexus-neon underline hover:text-white">WIN+WSL: Ambiente Base</button> para preparar sua máquina do zero antes de qualquer comando.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIN+WSL: Ambiente Base -->
+                <div id="doc-wsl" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🖥️ Windows + WSL: Do Zero ao Ambiente</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Antes de qualquer comando de desenvolvimento, seu Windows precisa ser liberado para executar scripts e seu ambiente Linux (WSL) precisa estar ativo. Esta é a fundação de tudo.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="shield-off" class="w-4 h-4"></i> Por que liberar o PowerShell?</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">Por padrão, o Windows bloqueia a execução de scripts externos por segurança (política <strong>Restricted</strong>). Para rodar npm, pip, scripts de automação e ferramentas de dev, você precisa mudar para <strong>RemoteSigned</strong> — que permite scripts locais e assina os externos.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="terminal" class="w-4 h-4"></i> O que é WSL?</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>Windows Subsystem for Linux.</strong> Roda um kernel Linux real dentro do Windows, sem precisar de VM ou dual-boot. Com ele você tem acesso a comandos bash, apt, curl e todo o ecossistema Linux — essencial para containers Docker e Kubernetes.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Passo 1: Liberar PowerShell para Scripts (Admin)</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Abrir PowerShell como Administrador e executar</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+                                    <button onclick="copyCommand('Set-ExecutionPolicy RemoteSigned -Scope CurrentUser')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 2: Instalar WSL 2 + Ubuntu</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instala WSL com Ubuntu (requer reinicialização)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">wsl --install ; wsl --set-default-version 2</code>
+                                    <button onclick="copyCommand('wsl --install ; wsl --set-default-version 2')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 3: Instalar Ferramentas Core (Windows)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Dependências: Winget (já incluso no Windows 10/11).</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Git + GitHub CLI + Node.js em um comando</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e</code>
+                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 4: Atualizar Ubuntu (dentro do WSL)</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Abrir terminal Ubuntu e atualizar pacotes</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">sudo apt update && sudo apt upgrade -y && sudo apt install -y curl git build-essential</code>
+                                    <button onclick="copyCommand('sudo apt update && sudo apt upgrade -y && sudo apt install -y curl git build-essential')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-nexus-blue/5 border-l-2 border-nexus-neon mt-6 text-xs text-slate-400">
+                                <strong>PRÓXIMO PASSO:</strong> Com o ambiente preparado, instale o <button onclick="showDoc('docker')" class="text-nexus-neon underline hover:text-white">Docker</button> para containerização.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOCKER: Containers -->
+                <div id="doc-docker" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🐳 Docker: Containers na Prática</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Docker é a tecnologia que empacota sua aplicação e todas as suas dependências em um container isolado e portátil. Elimina o "na minha máquina funciona". Pré-requisito para Kubernetes.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="box" class="w-4 h-4"></i> Container vs Máquina Virtual</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">Uma VM emula um computador inteiro (SO completo, ~GBs de RAM). Um Container compartilha o kernel do SO host e isola apenas a aplicação (~MBs). Resultado: containers iniciam em segundos, são portáteis e usam uma fração dos recursos.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="file-code" class="w-4 h-4"></i> Dockerfile: A Receita</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">É um arquivo de texto com instruções passo a passo de como montar a imagem do container. Você define o SO base, instala dependências, copia o código e declara o comando de inicialização. Commitado no Git junto com o código — é IaC na essência.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Instalação: Docker Desktop (Windows + WSL)</h4>
+                            <p class="text-xs text-slate-500 italic mb-2">Dependência: WSL 2 instalado e ativo (ver seção WIN+WSL).</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalar Docker Desktop via Winget</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install -e --id Docker.DockerDesktop</code>
+                                    <button onclick="copyCommand('winget install -e --id Docker.DockerDesktop')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Comandos Essenciais do Dia a Dia</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ver containers rodando e todas as imagens locais</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker ps ; docker images</code>
+                                    <button onclick="copyCommand('docker ps ; docker images')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Build de imagem e execução do container</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker build -t minha-app:v1 . ; docker run -d -p 8080:8080 minha-app:v1</code>
+                                    <button onclick="copyCommand('docker build -t minha-app:v1 . ; docker run -d -p 8080:8080 minha-app:v1')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Logs do container e acesso interno (bash)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">docker logs -f &lt;container_id&gt; ; docker exec -it &lt;container_id&gt; /bin/sh</code>
+                                    <button onclick="copyCommand('docker logs -f <container_id> ; docker exec -it <container_id> /bin/sh')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Subir múltiplos serviços com Docker Compose</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker compose up -d ; docker compose down</code>
+                                    <button onclick="copyCommand('docker compose up -d ; docker compose down')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Limpeza: remover containers parados e imagens não usadas</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">docker system prune -f</code>
+                                    <button onclick="copyCommand('docker system prune -f')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CI/CD: Deploy Contínuo -->
+                <div id="doc-cicd" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">⚙️ CI/CD: Deploy Automático</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">CI/CD é o pipeline que leva seu código do repositório até a produção de forma automática, rápida e segura. Sem deploy manual, sem surpresas.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="git-merge" class="w-4 h-4"></i> CI — Integração Contínua</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> A cada push no repositório, uma pipeline roda automaticamente: instala dependências, executa testes e valida o código. Se falhar, o deploy não acontece. Garante que código quebrado nunca chegue em produção.<br><strong>Ferramentas:</strong> GitHub Actions, GitLab CI, CircleCI, Jenkins.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="rocket" class="w-4 h-4"></i> CD — Entrega Contínua</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Após o CI passar, o CD automatiza o deploy para o ambiente de destino (staging ou produção). No nosso stack: push na <code class="text-nexus-neon">main</code> → Cloudflare Pages compila o frontend automaticamente em ~1 minuto.<br><strong>Resultado:</strong> Zero intervenção manual para colocar uma feature no ar.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Fluxo Git para CI/CD (Dia a Dia)</h4>
+                            <p class="text-xs text-slate-500 italic mb-2">Dependências: Git instalado, repositório no GitHub, Cloudflare/Render configurado.</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Fluxo completo: stage → commit → push → pipeline dispara</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">git add . ; git commit -m "feat: descrição da mudança" ; git push origin main</code>
+                                    <button onclick="copyCommand('git add . ; git commit -m \"feat: descrição da mudança\" ; git push origin main')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ver status dos deploys via GitHub CLI</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">gh run list --limit 5 ; gh run watch</code>
+                                    <button onclick="copyCommand('gh run list --limit 5 ; gh run watch')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-yellow-500/5 border-l-2 border-yellow-500 mt-6 text-xs text-slate-400">
+                                <strong class="text-yellow-400">BOAS PRÁTICAS:</strong> Nunca commite diretamente na <code class="text-nexus-neon">main</code> em projetos com equipe. Use branches com PRs revisados. Mantenha mensagens de commit descritivas (feat:, fix:, docs:, chore:) para rastreabilidade total no histórico.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DNS: Domínios & Riscos -->
+                <div id="doc-dns" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🌍 DNS: O Mapa da Internet</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">DNS (Domain Name System) é a agenda telefônica da internet. Traduz o nome <code class="text-nexus-neon">seusite.com</code> para o endereço IP do servidor. Mexer nele sem conhecimento causa downtime, perda de e-mails e queda no ranking do Google.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="globe" class="w-4 h-4"></i> Tipos de Registros DNS</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>A Record:</strong> Aponta o domínio para um endereço IPv4. Ex: <code class="text-nexus-neon">seusite.com → 192.168.1.1</code><br>
+                                    <strong>CNAME:</strong> Alias para outro domínio. Ex: <code class="text-nexus-neon">www → seusite.com</code><br>
+                                    <strong>MX:</strong> Define os servidores de e-mail. Mexer errado = todos os e-mails param de chegar.<br>
+                                    <strong>TXT:</strong> Verificações de propriedade, SPF, DKIM (anti-spam).<br>
+                                    <strong>NS:</strong> Define quem é o servidor autoritativo do domínio. <strong>Alterar NS = downtime de até 48h.</strong>
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="clock" class="w-4 h-4"></i> TTL — O Tempo que Ninguém Fala</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>TTL (Time To Live):</strong> Define por quantos segundos o registro DNS fica em cache no mundo. TTL padrão = 3600s (1 hora). Se você tiver TTL 86400 (24h) e trocar o servidor, a mudança pode demorar até 24h para propagar globalmente.<br><strong>Estratégia profissional:</strong> Antes de uma migração, reduza o TTL para 300s (5 min) com 48h de antecedência. Após migrar, aumente de volta.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="alert-triangle" class="w-4 h-4"></i> ⚠️ O Que Causa Downtime</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>Trocar NS (Nameservers):</strong> Downtime de 2 a 48 horas. Afeta TUDO: site, e-mail, subdomínios.<br>
+                                    <strong>Alterar MX sem backup:</strong> E-mails se perdem durante a propagação.<br>
+                                    <strong>Deletar registro A:</strong> Site sai do ar imediatamente.<br>
+                                    <strong>Renomear domínio:</strong> Perde todo o histórico de SEO, backlinks e posicionamento no Google. Evite a todo custo.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="search" class="w-4 h-4"></i> SEO & DNS: O Que Donos de Negócio PRECISAM Saber</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">O Google indexa o domínio, não o servidor. Trocar o domínio ou mudar URL de páginas sem redirect 301 é equivalente a destruir anos de trabalho de SEO. Se você tem uma loja online ou SaaS com tráfego orgânico, <strong>jamais mude o domínio</strong> sem um plano detalhado de redirecionamentos e monitoramento de ranking. O impacto pode durar meses.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Diagnóstico DNS via CLI</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Consultar registros DNS de um domínio</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">nslookup seudominio.com ; nslookup -type=MX seudominio.com</code>
+                                    <button onclick="copyCommand('nslookup seudominio.com ; nslookup -type=MX seudominio.com')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificar propagação DNS global (WSL/Linux)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">dig seudominio.com +short ; dig seudominio.com NS +short</code>
+                                    <button onclick="copyCommand('dig seudominio.com +short ; dig seudominio.com NS +short')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Testar conectividade e latência com o servidor</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">ping seudominio.com ; tracert seudominio.com</code>
+                                    <button onclick="copyCommand('ping seudominio.com ; tracert seudominio.com')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-red-500/5 border-l-2 border-red-500 mt-6 text-xs text-slate-400">
+                                <strong class="text-red-400">REGRA DE OURO:</strong> Antes de qualquer alteração de DNS em ambiente produtivo: (1) documente os registros atuais, (2) reduza o TTL para 300s com 48h de antecedência, (3) faça a mudança em horário de baixo tráfego, (4) monitore por pelo menos 2 horas. Nunca mexa em DNS às sextas-feiras.
                             </div>
                         </div>
                     </div>
