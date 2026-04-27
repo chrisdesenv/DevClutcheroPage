@@ -29,7 +29,7 @@
             --bg-color: #050a14;
             --text-color: #e2e8f0;
             --grid-color: rgba(0, 210, 255, 0.05);
-            --glass-bg: rgba(10, 20, 40, 0.8);
+            --glass-bg: rgba(10, 20, 40, 0.85);
         }
 
         body {
@@ -75,7 +75,26 @@
 
         .command-block:hover {
             border-color: rgba(0, 255, 255, 0.5);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+        }
+
+        .tech-card {
+            border-left: 4px solid #00d2ff;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-title {
+            color: #00ffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
     </style>
 </head>
@@ -94,89 +113,88 @@
             </a>
         </div>
         <div class="flex items-center space-x-8 text-[10px] font-mono tracking-widest uppercase font-bold">
-            <a href="index.html" class="hover:text-nexus-neon transition-colors">Voltar para o Home</a>
-            <span class="text-nexus-neon border-b border-nexus-neon pb-1">Documentação</span>
+            <a href="index.html" class="hover:text-nexus-neon transition-colors flex items-center gap-2" title="Retornar ao Início">
+                <i data-lucide="home" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Home</span>
+            </a>
+            <span class="text-nexus-neon border-b border-nexus-neon pb-1">Documentação Operacional</span>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row gap-8">
             <!-- Sidebar Navigation -->
-            <aside class="w-full lg:w-72 space-y-2">
-                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mb-4 pl-4 italic">Operational Levels</p>
-                <button onclick="showDoc('os')" id="btn-doc-os" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+            <aside class="w-full lg:w-80 space-y-2">
+                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mb-4 pl-4 italic">Protocolos & Guias</p>
+                <button onclick="showDoc('setup')" id="btn-doc-setup" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group active">
                     <i data-lucide="terminal" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
-                    <span class="font-mono text-xs uppercase tracking-widest">Level 01: CLI / OS</span>
+                    <span class="font-mono text-xs uppercase tracking-widest">SETUP: Estação de Build</span>
                 </button>
-                <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
-                    <i data-lucide="git-branch" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
-                    <span class="font-mono text-xs uppercase tracking-widest">Level 02: Git Sync</span>
-                </button>
-                <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
-                    <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
-                    <span class="font-mono text-xs uppercase tracking-widest">Level 03: SQL Audit</span>
-                </button>
-                <button onclick="showDoc('k8s')" id="btn-doc-k8s" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                <button onclick="showDoc('infra')" id="btn-doc-infra" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
                     <i data-lucide="layers" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
-                    <span class="font-mono text-xs uppercase tracking-widest">Level 04: Kubernetes</span>
+                    <span class="font-mono text-xs uppercase tracking-widest">INFRA: Kubernetes (K8s)</span>
                 </button>
                 <button onclick="showDoc('obs')" id="btn-doc-obs" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
                     <i data-lucide="activity" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
-                    <span class="font-mono text-xs uppercase tracking-widest">Level 05: Observability</span>
+                    <span class="font-mono text-xs uppercase tracking-widest">OBS: Stack de Monitoramento</span>
+                </button>
+                <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="git-branch" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">GIT: Sincronia & Segurança</span>
+                </button>
+                <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">SQL: Auditoria de Dados</span>
                 </button>
             </aside>
 
             <!-- Documentation Content -->
-            <div class="flex-1 glass-morphism p-8 md:p-12 relative overflow-hidden">
+            <div class="flex-1 glass-morphism p-8 md:p-12 relative overflow-hidden min-h-[70vh]">
                 <div class="absolute top-0 right-0 p-8 opacity-5">
                     <i data-lucide="binary" class="w-64 h-64"></i>
                 </div>
 
-                <!-- CLI / OS Context -->
-                <div id="doc-os" class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
-                            <i data-lucide="terminal" class="w-4 h-4"></i> # Level 01: Linha de Comando e Gestão de Sistema
-                        </h4>
-                        <p class="text-slate-400 text-sm font-mono leading-relaxed">
-                            A base de qualquer arquitetura resiliente começa no domínio do Shell. Comandos universais para automação e gestão de recursos.
+                <!-- SETUP: Estação de Build -->
+                <div id="doc-setup" class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">Build Ready Protocol</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            Antes de compilar qualquer linha de código, seu ambiente precisa estar "armado" com as ferramentas fundamentais. Este guia cobre o setup universal para Windows (PowerShell) e Linux/Docker.
                         </p>
-                        <div class="space-y-6 mt-8">
-                            <!-- Command 1 -->
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Diagnóstico de Recursos do Sistema</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Monitoramento em tempo real de CPU, Memória e Processos.</p>
-                                </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="edit-3" class="w-4 h-4"></i> VS Code & Visual Studio</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    O **VS Code** é o editor tático. O **Visual Studio (Build Tools)** fornece os compiladores C++ essenciais para o build de dependências nativas de Node.js e Python.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="box" class="w-4 h-4"></i> Motores de Execução</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    **Node.js (LTS)** e **Python 3.10+** são os motores que rodam o ecossistema de microsserviços e agentes de inteligência.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Configuração Inicial (Winget)</h4>
+                            
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalação Universal de Dependências (PowerShell)</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">top</code>
-                                    <button onclick="copyCommand('top')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS Microsoft.VisualStudio.2022.BuildTools -e</code>
+                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS Microsoft.VisualStudio.2022.BuildTools -e')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
-                            <!-- Command 2 -->
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Gestão de Armazenamento</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Visualização de partições e uso de disco de forma legível.</p>
-                                </div>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificação de Versões Instaladas</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">df -h</code>
-                                    <button onclick="copyCommand('df -h')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- Command 3 -->
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Análise de Rede e Portas</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Identificação de serviços ouvindo em portas específicas.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">netstat -tuln</code>
-                                    <button onclick="copyCommand('netstat -tuln')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">node -v ; python --version ; git --version</code>
+                                    <button onclick="copyCommand('node -v ; python --version ; git --version')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -185,131 +203,158 @@
                     </div>
                 </div>
 
-                <!-- Git Context -->
-                <div id="doc-git" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
-                            <i data-lucide="git-branch" class="w-4 h-4"></i> # Level 02: Repositórios & Sincronia Universal
-                        </h4>
-                        <p class="text-slate-400 text-sm font-mono leading-relaxed">
-                            O controle de versão é o cérebro da colaboração. Protocolos para manter a integridade do código e sincronia multicloud.
+                <!-- INFRA: Kubernetes (K8s) -->
+                <div id="doc-infra" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">☸️ KUBERNETES (K8s) - A Orquestração</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            O K8s é o "Maestro" do sistema. Ele gerencia a execução, resiliência e o ciclo de vida dos containers de forma automatizada.
                         </p>
-                        <div class="space-y-6 mt-8">
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Verificação de Segurança (Secrets Audit)</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Localização de arquivos sensíveis (.env, .json) antes do push.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">git ls-files .env</code>
-                                    <button onclick="copyCommand('git ls-files .env')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title">Pod: A Unidade Fundamental</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    A menor unidade do Kubernetes. Atua como uma "cápsula" que envelopa um ou mais containers Docker, gerenciando recursos e rede de forma isolada.
+                                </p>
                             </div>
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Sincronia Robusta de Diretórios</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Transferência diferencial de arquivos com alta performance.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">rsync -avz --progress source/ destination/</code>
-                                    <button onclick="copyCommand('rsync -avz --progress source/ destination/')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title">Deployment: Gestão de Estado & Escala</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Garante a resiliência do sistema. Define o estado desejado (ex: número de réplicas) e realiza o Auto-Healing caso algum Pod apresente falha.
+                                </p>
+                            </div>
+                            <div class="tech-card">
+                                <h5 class="tech-title">Service: Abstração de Rede (DNS)</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Como Pods são efêmeros, o Service provê um endpoint estável e balanceamento de carga para a comunicação entre diferentes camadas da aplicação.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title">Ingress: Gateway de Acesso Externo</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Gerencia o tráfego externo para os serviços internos, atuando como um roteador inteligente para múltiplas rotas e domínios.
+                                </p>
+                            </div>
+                            <div class="tech-card">
+                                <h5 class="tech-title">Requests & Limits: Gestão de Recursos</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Mecanismo que impede que um processo em falha consuma todos os recursos do host. Garante estabilidade e previsibilidade para a infraestrutura.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-8">
+                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Comando de Diagnóstico Global</p>
+                            <div class="flex items-center gap-3">
+                                <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">kubectl get all -A</code>
+                                <button onclick="copyCommand('kubectl get all -A')" class="p-3 bg-nexus-blue/10 hover:bg-nexus-blue hover:text-nexus-dark text-nexus-blue border border-nexus-blue transition-colors rounded-sm">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SQL Audit Context -->
-                <div id="doc-sql" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
-                            <i data-lucide="database" class="w-4 h-4"></i> # Level 03: Auditoria de Dados & SQL Performance
-                        </h4>
-                        <div class="space-y-6 mt-8">
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Análise de Query Performance</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Entenda como o banco está processando sua requisição.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">EXPLAIN ANALYZE SELECT * FROM table;</code>
-                                    <button onclick="copyCommand('EXPLAIN ANALYZE SELECT * FROM table;')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kubernetes Context -->
-                <div id="doc-k8s" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
-                            <i data-lucide="layers" class="w-4 h-4"></i> # Level 04: Orquestração com Kubernetes (K8s)
-                        </h4>
-                        <div class="space-y-6 mt-8">
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Estado do Cluster</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Listar nós e verificar conectividade do Control Plane.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">kubectl get nodes -o wide</code>
-                                    <button onclick="copyCommand('kubectl get nodes -o wide')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Debugging de Pods</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Logs em tempo real para isolamento de falhas.</p>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">kubectl logs -f [POD_NAME]</code>
-                                    <button onclick="copyCommand('kubectl logs -f [POD_NAME]')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
-                                        <i data-lucide="copy" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Observability Context -->
+                <!-- OBS: Stack de Monitoramento -->
                 <div id="doc-obs" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
-                            <i data-lucide="activity" class="w-4 h-4"></i> # Level 05: Observabilidade (Prometheus & Grafana)
-                        </h4>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">Monitoramento & Telemetria</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            A visibilidade total do sistema depende de três pilares: Métricas (Números), Logs (Texto) e Painéis (Visualização).
+                        </p>
+
+                        <div class="space-y-6 pt-4">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title">🔎 PROMETHEUS - Motor de Métricas (Números)</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                                    Especializado em séries temporais numéricas. Utiliza coleta ativa (Pull) para monitorar a saúde e performance de cada componente.
+                                </p>
+                                <ul class="text-[10px] text-slate-500 font-mono space-y-1 pl-4 border-l border-white/10 italic">
+                                    <li>> SCRAPING: Coleta periódica de dados de telemetria.</li>
+                                    <li>> PROMQL: Linguagem analítica para consultas complexas.</li>
+                                </ul>
+                            </div>
+
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title">📝 LOKI - Centralização de Logs (Texto)</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                                    Otimizado para agregação de logs em larga escala. Utiliza Labels para indexação eficiente, garantindo alta performance com baixo consumo de recursos.
+                                </p>
+                                <ul class="text-[10px] text-slate-500 font-mono space-y-1 pl-4 border-l border-white/10 italic">
+                                    <li>> LABELS: Otimização de busca via metadados.</li>
+                                    <li>> LOGQL: Consultas e filtragem de logs em tempo real.</li>
+                                </ul>
+                            </div>
+
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title">📊 GRAFANA - Visualização & Dashboards</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                                    Plataforma de observabilidade unificada. Conecta-se a múltiplas fontes de dados para criar painéis de controle dinâmicos e regras de alerta.
+                                </p>
+                                <ul class="text-[10px] text-slate-500 font-mono space-y-1 pl-4 border-l border-white/10 italic">
+                                    <li>> DATA SOURCES: Integração com Prometheus, Loki e Zabbix.</li>
+                                    <li>> ALERTING: Automação de notificações baseada em limites críticos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GIT: Sincronia & Segurança -->
+                <div id="doc-git" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">Git & Operational Security</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            O controle de versão exige rigor. Protocolos de autenticação e auditoria de segurança para garantir a integridade do código.
+                        </p>
+
                         <div class="space-y-6 mt-8">
-                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
-                                <div class="mb-4">
-                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Deploy da Stack de Monitoramento</h5>
-                                    <p class="text-slate-500 text-[10px] italic">Instalação via Helm para coleta automática de métricas.</p>
-                                </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Autenticação via GitHub CLI</p>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">helm install prometheus prometheus-community/prometheus</code>
-                                    <button onclick="copyCommand('helm install prometheus prometheus-community/prometheus')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto">gh auth login</code>
+                                    <button onclick="copyCommand('gh auth login')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 font-mono text-[11px] text-slate-400">
-                                <div class="p-4 border border-white/10 bg-black/20 rounded-sm">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase tracking-widest border-b border-nexus-neon/20 pb-1">Prometheus</p>
-                                    <p>Coleta métricas baseadas em séries temporais. Motor central de visibilidade.</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Auditoria de Segurança: Verificar Arquivos Sensíveis</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto">git ls-files .env ; git status -u</code>
+                                    <button onclick="copyCommand('git ls-files .env ; git status -u')" class="p-3 bg-nexus-blue/10 hover:bg-nexus-blue hover:text-nexus-dark text-nexus-blue border border-nexus-blue transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
                                 </div>
-                                <div class="p-4 border border-white/10 bg-black/20 rounded-sm">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase tracking-widest border-b border-nexus-neon/20 pb-1">Grafana</p>
-                                    <p>Visualização unificada de dados. Dashboards analíticos em tempo real.</p>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SQL: Auditoria de Dados -->
+                <div id="doc-sql" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">SQL Data Integrity</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Integridade e performance. Auditoria de execução para garantir escalabilidade e consistência dos dados.
+                        </p>
+
+                        <div class="tech-card mt-8">
+                            <h5 class="tech-title">Análise de Performance: EXPLAIN ANALYZE</h5>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Ferramenta fundamental para entender o plano de execução do banco de dados, permitindo a otimização de índices e redução de custo computacional.
+                            </p>
+                        </div>
+
+                        <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-8">
+                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Execução de Auditoria de Consulta</p>
+                            <div class="flex items-center gap-3">
+                                <code class="flex-1 block text-sm text-nexus-neon font-mono">EXPLAIN ANALYZE SELECT * FROM [TABLE_NAME];</code>
+                                <button onclick="copyCommand('EXPLAIN ANALYZE SELECT * FROM [TABLE_NAME];')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -344,7 +389,8 @@
             document.getElementById(`btn-doc-${context}`).classList.add('active');
         }
 
-        showDoc('os');
+        // Initialize first tab
+        showDoc('setup');
     </script>
 </body>
 </html>
