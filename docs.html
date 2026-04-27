@@ -106,18 +106,28 @@
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-[100] px-6 md:px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
-        <div class="flex items-center space-x-6">
+        <div class="flex items-center space-x-10">
+            <!-- Logo -->
             <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity">
                 <i data-lucide="zap" class="w-6 h-6"></i>
                 <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span class="text-nexus-neon">CH</span></span>
             </a>
+
+            <!-- Navigation Links (Left Aligned) -->
+            <div class="flex items-center space-x-8 text-[9px] font-mono tracking-[0.2em] uppercase font-bold border-l border-white/10 pl-10">
+                <a href="index.html" class="hover:text-nexus-neon transition-colors flex items-center gap-2" title="Retornar ao Início">
+                    <i data-lucide="home" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Home</span>
+                </a>
+                <span class="text-nexus-neon border-b border-nexus-neon pb-1">Docs</span>
+            </div>
         </div>
-        <div class="flex items-center space-x-8 text-[10px] font-mono tracking-widest uppercase font-bold">
-            <a href="index.html" class="hover:text-nexus-neon transition-colors flex items-center gap-2" title="Retornar ao Início">
-                <i data-lucide="home" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">Home</span>
-            </a>
-            <span class="text-nexus-neon border-b border-nexus-neon pb-1">Documentação Operacional</span>
+
+        <!-- Right Side: Secondary Actions (Optional) -->
+        <div class="flex items-center space-x-4">
+            <button onclick="copyCommand('nexus-contact')" class="text-nexus-blue hover:text-nexus-neon transition-colors p-2" title="Suporte Técnico">
+                <i data-lucide="help-circle" class="w-4 h-4"></i>
+            </button>
         </div>
     </nav>
 
