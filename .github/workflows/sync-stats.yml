@@ -1,0 +1,42 @@
+name: GitHub Stats Sync
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update index.html Stats
+        run: |
+          # O arquivo index.html está na raiz deste repositório
+          TARGET_FILE="index.html"
+          if [ ! -f "$TARGET_FILE" ]; then
+            echo "Error: $TARGET_FILE not found."
+            exit 1
+          fi
+
+          # Get current date
+          LAST_SYNC=$(date +'%d/%m/%Y')
+          
+          # Safe injection: update only the designated data-github tags
+          sed -i "s/data-github=\"sync\">[^<]*/data-github=\"sync\">SYNC: $LAST_SYNC/g" "$TARGET_FILE"
+          
+          echo "Sync completed for $LAST_SYNC"
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add index.html
+          git commit -m "System: Auto-sync GitHub Metrics [skip ci]" || echo "No changes to commit"
+          git push
