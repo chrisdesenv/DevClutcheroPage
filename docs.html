@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noxus Operational Manual | Docs</title>
+    <title>Docs | Nexus Architectural Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -29,7 +29,7 @@
             --bg-color: #050a14;
             --text-color: #e2e8f0;
             --grid-color: rgba(0, 210, 255, 0.05);
-            --glass-bg: rgba(10, 20, 40, 0.75);
+            --glass-bg: rgba(10, 20, 40, 0.8);
         }
 
         body {
@@ -51,9 +51,10 @@
             border: 1px solid rgba(0, 210, 255, 0.2);
         }
 
-        .neon-text {
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        .doc-tab-btn.active {
+            border-color: #00ffff !important;
+            background: rgba(0, 255, 255, 0.1) !important;
+            color: #00ffff !important;
         }
 
         #copy-toast {
@@ -68,123 +69,115 @@
             transform: translateY(0);
         }
 
-        .doc-content {
-            animation: fadeIn 0.4s ease-out forwards;
+        .command-block {
+            transition: all 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .doc-tab-btn.active {
-            border-color: #00ffff;
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
+        .command-block:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
         }
     </style>
 </head>
 
-<body class="noxus-grid min-h-screen pt-20">
-
+<body class="noxus-grid min-h-screen">
     <div id="copy-toast" class="glass-morphism px-6 py-3 rounded-lg border border-nexus-neon text-nexus-neon font-mono text-xs z-[200]">
-        Comando copiado com sucesso!
+        Comando copiado para o clipboard!
     </div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-[100] px-6 md:px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
         <div class="flex items-center space-x-6">
-            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
+            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity">
                 <i data-lucide="zap" class="w-6 h-6"></i>
-                <span class="font-mono font-bold tracking-tighter text-lg uppercase hidden sm:inline-block">Nexus.<span class="text-nexus-neon">CH</span></span>
+                <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span class="text-nexus-neon">CH</span></span>
             </a>
         </div>
-
-        <div class="hidden md:flex items-center space-x-8 text-[10px] font-mono tracking-widest uppercase font-bold">
-            <a href="index.html#curriculum" class="hover:text-nexus-neon transition-colors">Currículo</a>
-            <a href="index.html#about" class="hover:text-nexus-neon transition-colors">Trajetória</a>
-            <a href="index.html#architecture" class="hover:text-nexus-neon transition-colors">Arquitetura</a>
-            <a href="docs.html" class="text-nexus-neon transition-colors border-b-2 border-nexus-neon pb-1">Docs</a>
+        <div class="flex items-center space-x-8 text-[10px] font-mono tracking-widest uppercase font-bold">
+            <a href="index.html" class="hover:text-nexus-neon transition-colors">Voltar para o Home</a>
+            <span class="text-nexus-neon border-b border-nexus-neon pb-1">Documentação</span>
         </div>
     </nav>
 
-    <main class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold mb-4 font-mono tracking-tighter uppercase text-nexus-neon neon-text">Noxus Operational Manual</h2>
-            <p class="text-slate-500 font-mono text-[10px] uppercase tracking-[0.4em]">Core Commands & System Orchestration</p>
-        </div>
+    <main class="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full lg:w-72 space-y-2">
+                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mb-4 pl-4 italic">Operational Levels</p>
+                <button onclick="showDoc('os')" id="btn-doc-os" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="terminal" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">Level 01: CLI / OS</span>
+                </button>
+                <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="git-branch" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">Level 02: Git Sync</span>
+                </button>
+                <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">Level 03: SQL Audit</span>
+                </button>
+                <button onclick="showDoc('k8s')" id="btn-doc-k8s" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="layers" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">Level 04: Kubernetes</span>
+                </button>
+                <button onclick="showDoc('obs')" id="btn-doc-obs" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="activity" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">Level 05: Observability</span>
+                </button>
+            </aside>
 
-        <div class="flex flex-col lg:flex-row gap-8 glass-morphism p-1 rounded-xl overflow-hidden min-h-[600px]">
-            <!-- Sidebar Menu -->
-            <div class="w-full lg:w-72 bg-black/40 border-r border-white/5 p-6 flex flex-col gap-2">
-                <button onclick="showDoc('os')" id="btn-doc-os" class="doc-tab-btn active flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="monitor" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>CLI: OS & Terminal</span>
-                </button>
-                <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="git-branch" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>Repo: Git Sync</span>
-                </button>
-                <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="database" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>Query: SQL Audit</span>
-                </button>
-                <button onclick="showDoc('infra')" id="btn-doc-infra" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="file-text" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>INFRA: Documentos</span>
-                </button>
-                <button onclick="showDoc('k8s')" id="btn-doc-k8s" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="server" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>INFRA: Kubernetes</span>
-                </button>
-                <button onclick="showDoc('obs')" id="btn-doc-obs" class="doc-tab-btn flex items-center gap-3 px-4 py-4 text-[10px] font-mono uppercase tracking-widest text-left transition-all border border-transparent hover:border-nexus-neon/30 group">
-                    <i data-lucide="activity" class="w-4 h-4 text-nexus-blue group-hover:text-nexus-neon"></i>
-                    <span>Observabilidade</span>
-                </button>
-            </div>
-
-            <!-- Terminal Content Area -->
-            <div class="flex-1 bg-black/60 p-8 font-mono relative">
-                <div class="absolute top-4 right-8 flex gap-2">
-                    <span class="w-2 h-2 rounded-full bg-red-500/50"></span>
-                    <span class="w-2 h-2 rounded-full bg-yellow-500/50"></span>
-                    <span class="w-2 h-2 rounded-full bg-green-500/50"></span>
+            <!-- Documentation Content -->
+            <div class="flex-1 glass-morphism p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <i data-lucide="binary" class="w-64 h-64"></i>
                 </div>
 
-                <!-- OS Context -->
+                <!-- CLI / OS Context -->
                 <div id="doc-os" class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # Level 01: Kernel & OS Execution
+                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-4 h-4"></i> # Level 01: Linha de Comando e Gestão de Sistema
                         </h4>
-                        <div class="space-y-6">
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 01</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Windows PowerShell rodando como Administrador</span>
+                        <p class="text-slate-400 text-sm font-mono leading-relaxed">
+                            A base de qualquer arquitetura resiliente começa no domínio do Shell. Comandos universais para automação e gestão de recursos.
+                        </p>
+                        <div class="space-y-6 mt-8">
+                            <!-- Command 1 -->
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Diagnóstico de Recursos do Sistema</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Monitoramento em tempo real de CPU, Memória e Processos.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
-                                    <button onclick="copyCommand('Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">top</code>
+                                    <button onclick="copyCommand('top')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 02</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Pré-instalação de binários globais (Git, PostgreSQL, Node)</span>
+                            <!-- Command 2 -->
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Gestão de Armazenamento</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Visualização de partições e uso de disco de forma legível.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> git --version ; psql --version ; node -v</code>
-                                    <button onclick="copyCommand('git --version ; psql --version ; node -v')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">df -h</code>
+                                    <button onclick="copyCommand('df -h')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Command 3 -->
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Análise de Rede e Portas</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Identificação de serviços ouvindo em portas específicas.</p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">netstat -tuln</code>
+                                    <button onclick="copyCommand('netstat -tuln')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
@@ -195,43 +188,34 @@
                 <!-- Git Context -->
                 <div id="doc-git" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # Level 02: Repositórios & Sincronia de Versionamento
+                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
+                            <i data-lucide="git-branch" class="w-4 h-4"></i> # Level 02: Repositórios & Sincronia Universal
                         </h4>
-                        <div class="space-y-6">
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 03</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Estar logado no GitHub CLI ou possuir chave SSH configurada</span>
+                        <p class="text-slate-400 text-sm font-mono leading-relaxed">
+                            O controle de versão é o cérebro da colaboração. Protocolos para manter a integridade do código e sincronia multicloud.
+                        </p>
+                        <div class="space-y-6 mt-8">
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Verificação de Segurança (Secrets Audit)</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Localização de arquivos sensíveis (.env, .json) antes do push.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> git status ; git remote -v</code>
-                                    <button onclick="copyCommand('git status ; git remote -v')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">git ls-files .env</code>
+                                    <button onclick="copyCommand('git ls-files .env')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 04</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Ter conexão com a internet e permissão de rede na porta 443/22</span>
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Sincronia Robusta de Diretórios</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Transferência diferencial de arquivos com alta performance.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> git fetch ; git log origin/main..main</code>
-                                    <button onclick="copyCommand('git fetch ; git log origin/main..main')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 05</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Arquivos modificados não-ignorados (trackeados) no diretório local</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> git add . ; git commit -m 'Docs updated' ; git push</code>
-                                    <button onclick="copyCommand('git add . ; git commit -m \'Docs updated\' ; git push')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">rsync -avz --progress source/ destination/</code>
+                                    <button onclick="copyCommand('rsync -avz --progress source/ destination/')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
@@ -242,56 +226,20 @@
                 <!-- SQL Audit Context -->
                 <div id="doc-sql" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # Level 03: Data Analytics & SQL Audit
+                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
+                            <i data-lucide="database" class="w-4 h-4"></i> # Level 03: Auditoria de Dados & SQL Performance
                         </h4>
-                        <div class="space-y-6">
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 06</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Serviço do PostgreSQL rodando localmente</span>
+                        <div class="space-y-6 mt-8">
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Análise de Query Performance</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Entenda como o banco está processando sua requisição.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">QUERY> \du ; \dt ; \d [TABELA]</code>
-                                    <button onclick="copyCommand('\\du ; \\dt ; \\d [TABELA]')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">EXPLAIN ANALYZE SELECT * FROM table;</code>
+                                    <button onclick="copyCommand('EXPLAIN ANALYZE SELECT * FROM table;')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
-                                </div>
-                            </div>
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 07</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Estar logado no DB alvo (ex: psql -U postgres -d MEU_BANCO)</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">QUERY> SELECT [COLUNA], COUNT(*) FROM [TABELA] GROUP BY [COLUNA] HAVING COUNT(*) > 1;</code>
-                                    <button onclick="copyCommand('SELECT [COLUNA], COUNT(*) FROM [TABELA] GROUP BY [COLUNA] HAVING COUNT(*) > 1;')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Infra/Docs Context -->
-                <div id="doc-infra" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # INFRA: Padrões de Propagação DNS (SLA Big Techs)</h4>
-                        <div class="space-y-6 text-sm text-slate-300 leading-relaxed font-mono">
-                            <p class="text-nexus-blue text-[10px] uppercase opacity-70 mb-4">// Escopo de propagação global e latência</p>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="p-4 border border-white/5 bg-white/5">
-                                    <p class="text-nexus-neon mb-1">CLOUDFLARE</p>
-                                    <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: ~24 HOURS</p>
-                                    <p class="text-xs">Rede Anycast permite propagação em minutos, mas a estabilidade total é garantida em 24h.</p>
-                                </div>
-                                <div class="p-4 border border-white/5 bg-white/5">
-                                    <p class="text-nexus-neon mb-1">GOOGLE CLOUD</p>
-                                    <p class="text-[10px] text-slate-500 uppercase mb-2">SLA: ~48 HOURS</p>
-                                    <p class="text-xs">Atualizações autoritativas em segundos, mas replicação para ISPs globais requer 2 dias.</p>
                                 </div>
                             </div>
                         </div>
@@ -301,31 +249,31 @@
                 <!-- Kubernetes Context -->
                 <div id="doc-k8s" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # Level 04: Kubernetes & Container Orchestration
+                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
+                            <i data-lucide="layers" class="w-4 h-4"></i> # Level 04: Orquestração com Kubernetes (K8s)
                         </h4>
-                        <div class="space-y-6">
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 08</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Cluster Kubernetes Local (K3d / Docker Desktop) Ativo</span>
+                        <div class="space-y-6 mt-8">
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Estado do Cluster</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Listar nós e verificar conectividade do Control Plane.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> kubectl get nodes ; kubectl get namespaces</code>
-                                    <button onclick="copyCommand('kubectl get nodes ; kubectl get namespaces')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">kubectl get nodes -o wide</code>
+                                    <button onclick="copyCommand('kubectl get nodes -o wide')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 09</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Helm (Gerenciador de Pacotes K8s) Instalado</span>
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Debugging de Pods</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Logs em tempo real para isolamento de falhas.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> helm repo add bitnami https://charts.bitnami.com/bitnami ; helm repo update</code>
-                                    <button onclick="copyCommand('helm repo add bitnami https://charts.bitnami.com/bitnami ; helm repo update')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">kubectl logs -f [POD_NAME]</code>
+                                    <button onclick="copyCommand('kubectl logs -f [POD_NAME]')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
@@ -333,42 +281,34 @@
                     </div>
                 </div>
 
-                <!-- Observabilidade Context -->
+                <!-- Observability Context -->
                 <div id="doc-obs" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
                     <div class="space-y-4">
-                        <h4 class="text-nexus-neon text-xs uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2">
-                            # Level 05: Observabilidade & Telemetria Avançada
+                        <h4 class="text-nexus-neon text-sm uppercase italic tracking-tighter border-b border-nexus-neon/20 pb-2 flex items-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4"></i> # Level 05: Observabilidade (Prometheus & Grafana)
                         </h4>
-                        <div class="space-y-6">
-                            <div class="relative group">
-                                <div class="mb-2">
-                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 text-[9px] uppercase tracking-widest font-bold rounded-sm mr-2">Dependência 10</span>
-                                    <span class="text-nexus-blue text-[10px] uppercase opacity-90">// Volumes Persistentes (PV/PVC) configurados no drive D:\</span>
+                        <div class="space-y-6 mt-8">
+                            <div class="command-block relative group bg-white/5 p-6 border border-white/10 rounded-sm transition-all">
+                                <div class="mb-4">
+                                    <h5 class="text-white text-xs font-bold uppercase mb-1">Deploy da Stack de Monitoramento</h5>
+                                    <p class="text-slate-500 text-[10px] italic">Instalação via Helm para coleta automática de métricas.</p>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <code class="flex-1 block bg-nexus-neon/5 p-4 border-l-2 border-nexus-neon text-sm text-white overflow-x-auto whitespace-nowrap">> helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace</code>
-                                    <button onclick="copyCommand('helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace')" class="flex-shrink-0 p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm" title="Copiar Comando Completo">
-                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    <code class="flex-1 block bg-black/40 p-4 border-l-2 border-nexus-neon text-sm text-nexus-blue font-mono overflow-x-auto">helm install prometheus prometheus-community/prometheus</code>
+                                    <button onclick="copyCommand('helm install prometheus prometheus-community/prometheus')" class="p-3 bg-nexus-neon/10 hover:bg-nexus-neon hover:text-nexus-dark text-nexus-neon border border-nexus-neon transition-colors rounded-sm">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 font-mono text-xs text-slate-400">
-                                <div class="p-4 border border-white/5 bg-black/40">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase border-b border-nexus-neon/20 pb-1">Prometheus</p>
-                                    <p>Coleta e armazena métricas baseadas em séries temporais. Motor central do monitoramento local e cloud.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 font-mono text-[11px] text-slate-400">
+                                <div class="p-4 border border-white/10 bg-black/20 rounded-sm">
+                                    <p class="text-nexus-neon mb-2 font-bold uppercase tracking-widest border-b border-nexus-neon/20 pb-1">Prometheus</p>
+                                    <p>Coleta métricas baseadas em séries temporais. Motor central de visibilidade.</p>
                                 </div>
-                                <div class="p-4 border border-white/5 bg-black/40">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase border-b border-nexus-neon/20 pb-1">Loki (Grafana)</p>
-                                    <p>Agregação de logs inspirada no Prometheus. Perfeito para capturar os logs dos agentes (HULK, THOR) via Promtail.</p>
-                                </div>
-                                <div class="p-4 border border-white/5 bg-black/40">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase border-b border-nexus-neon/20 pb-1">Grafana</p>
-                                    <p>O painel central. Integra Prometheus, Loki e Zabbix em dashboards visuais dinâmicos.</p>
-                                </div>
-                                <div class="p-4 border border-white/5 bg-black/40">
-                                    <p class="text-nexus-neon mb-2 font-bold uppercase border-b border-nexus-neon/20 pb-1">Zabbix</p>
-                                    <p>Monitoramento robusto de infraestrutura clássica, servidores host e redes legadas. Emite triggers via webhook.</p>
+                                <div class="p-4 border border-white/10 bg-black/20 rounded-sm">
+                                    <p class="text-nexus-neon mb-2 font-bold uppercase tracking-widest border-b border-nexus-neon/20 pb-1">Grafana</p>
+                                    <p>Visualização unificada de dados. Dashboards analíticos em tempo real.</p>
                                 </div>
                             </div>
                         </div>
@@ -380,7 +320,7 @@
     </main>
 
     <footer class="py-20 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
-        &copy; 2026 Noxus Architectural Intelligence | All Rights Reserved
+        &copy; 2026 Noxus Architectural Intelligence | Security & Resilience Protocol
     </footer>
 
     <script>
@@ -398,11 +338,10 @@
 
         function showDoc(context) {
             document.querySelectorAll('.doc-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.doc-tab-btn').forEach(el => el.classList.remove('active', 'border-nexus-neon', 'bg-nexus-neon/10'));
+            document.querySelectorAll('.doc-tab-btn').forEach(el => el.classList.remove('active'));
             
             document.getElementById(`doc-${context}`).classList.remove('hidden');
-            const btn = document.getElementById(`btn-doc-${context}`);
-            btn.classList.add('active', 'border-nexus-neon', 'bg-nexus-neon/10');
+            document.getElementById(`btn-doc-${context}`).classList.add('active');
         }
 
         showDoc('os');
