@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian | About & Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            dark: '#050a14',
+                            blue: '#00d2ff',
+                            neon: '#00ffff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #050a14;
+            --text-color: #e2e8f0;
+            --grid-color: rgba(0, 210, 255, 0.05);
+            --glass-bg: rgba(10, 20, 40, 0.75);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .noxus-grid {
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glass-morphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .neon-text {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        #copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            transform: translateY(100px);
+            transition: transform 0.3s ease;
+        }
+
+        #copy-toast.show {
+            transform: translateY(0);
+        }
+
+        /* Typewriter effect cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1em;
+            background-color: #00ffff;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .accordion-content.open {
+            max-height: 1500px;
+            opacity: 1;
+        }
+        
+        .accordion-button.active {
+            border-color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .accordion-button.active .chevron {
+            transform: rotate(90deg);
+            color: #00ffff;
+        }
+        
+        /* Custom padding to allow nested items without jumping */
+        .acc-inner {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 210, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="noxus-grid min-h-screen flex flex-col">
+
+    <div id="copy-toast"
+        class="glass-morphism px-6 py-3 rounded-lg border border-nexus-neon text-nexus-neon font-mono text-xs z-[200]">
+        E-mail copiado com sucesso!
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-[100] px-6 md:px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
+        <div class="flex items-center space-x-10">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
+                <i data-lucide="zap" class="w-6 h-6"></i>
+                <span class="font-mono font-bold tracking-tighter text-lg uppercase hidden sm:inline-block">Nexus.<span class="text-nexus-neon">CH</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 text-[9px] font-mono tracking-[0.2em] uppercase font-bold border-l border-white/10 pl-10">
+                <a href="index.html" class="hover:text-nexus-neon transition-colors" data-i18n="nav-home">Home</a>
+                <a href="about.html" class="text-nexus-neon transition-colors" data-i18n="nav-about-page">About</a>
+                <a href="index.html#architecture" class="hover:text-nexus-neon transition-colors" data-i18n="nav-arch">Arquitetura</a>
+                <a href="docs.html" class="hover:text-nexus-neon transition-colors" data-i18n="nav-docs">Docs</a>
+            </div>
+        </div>
+
+        <!-- Right Side: Lang & Socials -->
+        <div class="flex items-center space-x-6">
+            <div class="hidden sm:flex items-center space-x-4 text-[8px] font-mono font-bold tracking-widest uppercase">
+                <button onclick="setLang('pt')" class="hover:text-nexus-neon transition-colors" id="btn-pt">PT</button>
+                <button onclick="setLang('en')" class="opacity-50 hover:text-nexus-neon transition-colors" id="btn-en">EN</button>
+            </div>
+
+            <div class="flex items-center space-x-2 border-l border-white/10 pl-6">
+                <a href="https://www.linkedin.com/in/christian-felipe-407bb7198/" target="_blank" rel="noopener noreferrer" class="text-nexus-blue hover:text-nexus-neon transition-colors p-2">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                </a>
+                <button onclick="copyEmail()" class="text-nexus-blue hover:text-nexus-neon transition-colors p-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto w-full">
+        
+        <!-- Hero Title Section -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 font-mono tracking-tighter uppercase text-white neon-text">
+                Christian Felipe
+            </h1>
+            <div class="h-8 md:h-10 text-nexus-blue font-mono text-sm md:text-lg uppercase tracking-[0.3em] flex justify-center items-center">
+                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            </div>
+        </div>
+
+        <!-- Accordion Section -->
+        <div class="space-y-4">
+            
+            <!-- Resumo Profissional -->
+            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-blue/30 transition-all hover:border-nexus-blue/50 group">
+                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-resumo', this)">
+                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
+                        <span class="text-nexus-neon">>_</span>
+                        Resumo Profissional & Diferencial
+                    </div>
+                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-resumo" class="accordion-content bg-nexus-dark/50">
+                    <div class="acc-inner border-nexus-blue/10 text-slate-300 text-sm leading-relaxed text-justify">
+                        <p>Especialista em infraestrutura crítica e automação de alta performance. Desenvolvedor e operador exclusivo do <strong class="text-nexus-neon">AuditCH NEXUS</strong>, plataforma proprietária de orquestração de IA para auditoria contínua, segurança e excelência técnica. Foco em garantir resultados superiores através de automação preditiva e arquitetura soberana.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arsenal de Agentes -->
+            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-neon/30 transition-all hover:border-nexus-neon/50 group">
+                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-arsenal', this)">
+                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
+                        <i data-lucide="bot" class="w-5 h-5 text-nexus-neon"></i>
+                        Arsenal de Agentes (Uso Privado / Excelência)
+                    </div>
+                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-arsenal" class="accordion-content bg-nexus-dark/50">
+                    <div class="acc-inner border-nexus-neon/10 text-slate-300 text-sm leading-relaxed space-y-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">DOCKER_RM:</strong> Gestão Adaptativa de Recursos (Learning Baseline/P95).</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">HULK & THOR:</strong> Auditoria de Segurança (OWASP) e Orquestração de Infraestrutura/Redes.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">IDEAFORGE (Robô Readme):</strong> Automação total de documentação técnica e gestão de ideias.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">NEXUS (Orquestrador Mestre):</strong> Inteligência autônoma de administração e balanceamento em cascata de múltiplos LLMs para evitar downtime e rate limits.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">Auditoria Sênior (IA):</strong> Engenharia autônoma para SRE, validando compliance e arquitetura de ponta a ponta.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-nexus-neon mt-0.5">▸</span> 
+                                <div><strong class="text-white">Gateway Gerenciador (Esquadrão Tático):</strong> Roteamento avançado, visão e segurança Zero-Trust.</div>
+                            </li>
+                        </ul>
+                        <p class="italic text-nexus-blue/80 text-xs mt-6 font-mono tracking-tighter">* Com mais de 1.400 skills mapeadas e integradas de forma autônoma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiência Profissional -->
+            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
+                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-xp', this)">
+                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-slate-400"></i>
+                        Experiência Profissional
+                    </div>
+                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-xp" class="accordion-content bg-nexus-dark/50">
+                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed space-y-8">
+                        
+                        <div>
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
+                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Locaweb Company (Wake Commerce)</h4>
+                                <span class="text-nexus-neon font-mono text-xs font-bold md:text-right">2020 - 2025</span>
+                            </div>
+                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Analista de Infraestrutura SRE</p>
+                            <p class="text-justify">Gestão de Cloud AWS/Azure e clusters de Containers (ECS/Docker). Operação de monitoramento avançado (Zabbix/Grafana) e Backup (Veeam). Sustentação de ambientes de alta disponibilidade e missão crítica.</p>
+                        </div>
+
+                        <div class="border-t border-white/5 pt-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
+                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Hospital Univ. Evangélico Mackenzie</h4>
+                                <span class="text-nexus-blue font-mono text-xs font-bold md:text-right">2019 - 2020</span>
+                            </div>
+                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Técnico em Informática</p>
+                            <p class="text-justify">Implementação de arquitetura de rede e migração estratégica de servidores. Gestão de infraestrutura de emergência e suporte crítico N1-N2.</p>
+                        </div>
+
+                        <div class="border-t border-white/5 pt-6">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
+                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Sykes Brasil (Dell Support)</h4>
+                                <span class="text-slate-400 font-mono text-xs font-bold md:text-right">2018 - 2019</span>
+                            </div>
+                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Técnico de Suporte Especializado</p>
+                            <p class="text-justify">Troubleshooting avançado de hardware e software nível OSRI para Dell Brasil.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cases de Sucesso -->
+            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
+                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-cases', this)">
+                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
+                        <i data-lucide="award" class="w-5 h-5 text-yellow-400"></i>
+                        Cases de Sucesso
+                    </div>
+                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-cases" class="accordion-content bg-nexus-dark/50">
+                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed space-y-4">
+                        <ul class="space-y-5">
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-400 mt-1">▸</span> 
+                                <div class="text-justify"><strong class="text-white">Projeto — SaaS para Musculação & Saúde:</strong> Arquitetura e desenvolvimento de plataforma escalável. Implementação de inteligências em background para otimização do fluxo end-to-end, gestão e experiência sem atritos na nuvem.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-400 mt-1">▸</span> 
+                                <div class="text-justify"><strong class="text-white">Projeto — Sistema de Auditoria de Código (IA):</strong> Engenharia de um ambiente SRE autônomo. Capaz de realizar varreduras profundas no código para identificar falhas arquiteturais, dívidas técnicas e aplicar correções estruturais em pipelines contínuos.</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-yellow-400 mt-1">▸</span> 
+                                <div class="text-justify"><strong class="text-white">Projeto — Noxus Orquestrador (Ecossistema Corporativo):</strong> Criação do próprio motor de IA e sistema em cascata de múltiplos LLMs para sustentar automação extrema de processos, conectando e executando assincronamente integrações sem gargalos de rate limit.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificações, Habilidades e Idiomas -->
+            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
+                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-skills', this)">
+                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
+                        <i data-lucide="layers" class="w-5 h-5 text-nexus-blue"></i>
+                        Certificações, Habilidades & Idiomas
+                    </div>
+                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-skills" class="accordion-content bg-nexus-dark/50">
+                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed">
+                        
+                        <div class="mb-8">
+                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Certificações & Cursos</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> CCNA Cisco (Routing/Switching)</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> AWS Cloud Practitioner</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> LPI Linux Essentials</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> Amazon ECS & Fargate Master</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> Telecomunicações (Técnico)</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> ADS (Graduação - Cursando)</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Habilidades Técnicas Principais</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Docker & Orquestração</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Cloud Architecture</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Python / Automação IA</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Networking TCP/IP</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> CyberSecurity / OWASP</div>
+                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Linux & Windows Server</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Idiomas</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2"><strong class="text-white uppercase font-mono text-xs">Inglês:</strong> Técnico / Intermediário-Avançado</div>
+                                <div class="flex items-center gap-2"><strong class="text-white uppercase font-mono text-xs">Espanhol:</strong> Básico / Intermediário</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer
+        class="py-8 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic mt-auto">
+        &copy; 2026 Noxus Architectural Intelligence | All Rights Reserved
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Translations Dictionary
+        const translations = {
+            pt: {
+                "nav-home": "Home", "nav-about-page": "Sobre", "nav-arch": "Arquitetura", "nav-docs": "Docs",
+            },
+            en: {
+                "nav-home": "Home", "nav-about-page": "About", "nav-arch": "Architecture", "nav-docs": "Docs",
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            document.getElementById('btn-pt').style.opacity = lang === 'pt' ? '1' : '0.5';
+            document.getElementById('btn-en').style.opacity = lang === 'en' ? '1' : '0.5';
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('christianespoja@gmail.com').then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.innerText = "E-mail copiado com sucesso!";
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            });
+        }
+
+        // Typewriter Effect
+        const phrases = [
+            "Senior Systems Architect",
+            "SRE Specialist",
+            "AI Engineer",
+            "Cloud Infrastructure Expert"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter-text');
+        
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 30 : 80;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2500; // Pause at end of phrase
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before starting new phrase
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typing effect on load
+        window.onload = typeWriter;
+
+        // Accordion Toggle Logic
+        function toggleAccordion(id, btn) {
+            const content = document.getElementById(id);
+            const isOpen = content.classList.contains('open');
+            
+            // Auto-close others behavior (optional)
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                if (el.id !== id) {
+                    el.classList.remove('open');
+                    el.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            if (!isOpen) {
+                content.classList.add('open');
+                btn.classList.add('active');
+            } else {
+                content.classList.remove('open');
+                btn.classList.remove('active');
+            }
+        }
+        
+        // Auto open the first one on page load
+        setTimeout(() => {
+            const firstAccBtn = document.querySelector('.accordion-button');
+            if(firstAccBtn) toggleAccordion('acc-resumo', firstAccBtn);
+        }, 300);
+
+    </script>
+</body>
+</html>
