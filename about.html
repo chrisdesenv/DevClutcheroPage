@@ -86,7 +86,20 @@
             50% { opacity: 0; }
         }
 
-            </style>
+        /* Carousel */
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+        .carousel-item.active {
+            opacity: 1;
+            z-index: 10;
+        }
+    </style>
 </head>
 
 <body class="noxus-grid min-h-screen flex flex-col">
@@ -132,7 +145,7 @@
         </div>
     </nav>
 
-    <main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto w-full">
+    <main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
         
         <!-- Hero Title Section -->
         <div class="text-center mb-12">
@@ -140,17 +153,7 @@
                     <p class="text-nexus-neon font-mono text-[10px] md:text-xs uppercase tracking-[0.4em]">Senior Systems Architect & AI Engineer</p>
                 </div>
 
-<!-- Accordion Section -->
-        <div class="space-y-4">
-            
-            <!-- Resumo Profissional -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-blue/30 transition-all hover:border-nexus-blue/50 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-resumo', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <span class="text-nexus-neon">>_</span>
-                        Resumo Profissional & Diferencial
-                    </div>
-        </div>
+
 
                         <!-- ABOUT / MANIFESTO SECTION -->
                 <div id="about" class="glass-morphism p-8 md:p-12 mb-16 border-l-4 border-nexus-neon shadow-[0_0_30px_rgba(0,255,255,0.05)] rounded-sm">
@@ -174,7 +177,7 @@
                     </div>
                 </div>
 
-    </main>
+
 
     
 
@@ -252,6 +255,7 @@
                             </div>
                         </div>
                     </div>
+    </main>
 
     <footer
         class="py-8 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic mt-auto">

@@ -989,13 +989,19 @@
             }
         }
         
-        setTimeout(() => {
-            const firstAccBtn = document.querySelector('.accordion-button');
-            if(firstAccBtn) {
-                const match = firstAccBtn.getAttribute('onclick').match(/'([^']+)'/);
-                if (match) toggleAccordion(match[1], firstAccBtn);
-            }
-        }, 300);
+        // Add hover to expand logic
+        document.querySelectorAll('.accordion-button').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                const match = this.getAttribute('onclick').match(/'([^']+)'/);
+                if (match) {
+                    const id = match[1];
+                    const content = document.getElementById(id);
+                    if (content && !content.classList.contains('open')) {
+                        toggleAccordion(id, this);
+                    }
+                }
+            });
+        });
 
 </script>
 </body>
