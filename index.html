@@ -146,6 +146,51 @@
             padding: 1.5rem;
             border-top: 1px solid rgba(0, 210, 255, 0.1);
         }
+    
+        /* Typewriter effect cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1em;
+            background-color: #00ffff;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .accordion-content.open {
+            max-height: 1500px;
+            opacity: 1;
+        }
+        
+        .accordion-button.active {
+            border-color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .accordion-button.active .chevron {
+            transform: rotate(90deg);
+            color: #00ffff;
+        }
+        
+        .acc-inner {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0, 210, 255, 0.1);
+        }
+
     </style>
 </head>
 
@@ -201,21 +246,13 @@
             <div class="absolute inset-0 bg-gradient-to-b from-nexus-dark/90 via-nexus-dark/80 to-nexus-dark"></div>
             
             <div class="relative z-10 max-w-7xl mx-auto w-full">
-                <div class="text-center mb-12">
-                    <h2 class="text-5xl md:text-7xl font-black mb-4 font-mono tracking-tighter uppercase text-white neon-text">Christian Felipe</h2>
-                    <p class="text-nexus-neon font-mono text-[10px] md:text-xs uppercase tracking-[0.4em]">Senior Systems Architect & AI Engineer</p>
-                </div>
-
-<!-- Accordion Section -->
-        <div class="space-y-4">
-            
-            <!-- Resumo Profissional -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-blue/30 transition-all hover:border-nexus-blue/50 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-resumo', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <span class="text-nexus-neon">>_</span>
-                        Resumo Profissional & Diferencial
-                    </div>
+                <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 font-mono tracking-tighter uppercase text-white neon-text">
+                Christian Felipe
+            </h1>
+            <div class="h-8 md:h-10 text-nexus-blue font-mono text-sm md:text-lg uppercase tracking-[0.3em] flex justify-center items-center">
+                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            </div>
                     <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
                 </button>
                 <div id="acc-resumo" class="accordion-content bg-nexus-dark/50">
@@ -389,80 +426,7 @@
 
         </div>
 
-                <div class="flex flex-col lg:flex-row gap-12 items-start justify-between">
-                    <!-- Left: Curriculo / Professional Timeline -->
-                    <div class="flex-1 w-full glass-morphism p-6 md:p-10 border-l-4 border-nexus-blue shadow-[0_0_30px_rgba(0,210,255,0.1)]">
-                        <h4 class="text-nexus-blue text-sm uppercase font-mono mb-10 tracking-[0.3em] italic font-bold">// Currículo & Trajetória Profissional</h4>
-                        
-                        <div class="space-y-10">
-                            <!-- Locaweb -->
-                            <div class="relative pl-8 md:pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-neon shadow-[0_0_15px_#00ffff] ring-4 ring-nexus-neon/20"></div>
-                                <p class="text-white text-lg md:text-xl font-black uppercase mb-1 tracking-tight">Locaweb Company (Wake Commerce)</p>
-                                <p class="text-nexus-neon text-[10px] md:text-xs mb-3 font-mono italic font-bold tracking-widest">MAI 2020 - DEZ 2025 | Analista de Infraestrutura SRE</p>
-                                <ul class="text-slate-400 text-xs md:text-sm leading-relaxed uppercase font-medium space-y-2">
-                                    <li class="flex items-start gap-2"><span class="text-nexus-neon">▸</span> <span>Manutenção e continuidade do projeto de ECS e Containerização na AWS, cumprindo 100% dos OKRs.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-nexus-neon">▸</span> <span>Migração estratégica de domínios para Samurai Experts e Ideris.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-nexus-neon">▸</span> <span>Gestão híbrida de infraestrutura crítica (Cloud AWS/Azure e On-premise).</span></li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Mackenzie -->
-                            <div class="relative pl-8 md:pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-nexus-blue shadow-[0_0_15px_#00d2ff] ring-4 ring-nexus-blue/20"></div>
-                                <p class="text-white text-lg md:text-xl font-black uppercase mb-1 tracking-tight">Hospital Universitário Evangélico Mackenzie</p>
-                                <p class="text-nexus-blue text-[10px] md:text-xs mb-3 font-mono font-bold tracking-widest">MAR 2019 - NOV 2020 | Técnico em Informática</p>
-                                <ul class="text-slate-400 text-xs md:text-sm leading-relaxed uppercase font-medium space-y-2">
-                                    <li class="flex items-start gap-2"><span class="text-nexus-blue">▸</span> <span>Atuação crítica no front-line da pandemia: montagem de 8 UTIs COVID e migração de serviços vitais.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-nexus-blue">▸</span> <span>Suporte in loco N1-N2 para sistemas, redes e equipamentos médicos complexos.</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-nexus-blue">▸</span> <span>Implementação de nova arquitetura de rede e migração de infraestrutura hospitalar.</span></li>
-                                </ul>
-                            </div>
-                            
-                            <!-- SYKES -->
-                            <div class="relative pl-8 md:pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5"></div>
-                                <p class="text-white text-lg md:text-xl font-black uppercase mb-1 tracking-tight">SYKES Brasil</p>
-                                <p class="text-nexus-blue text-[10px] md:text-xs mb-3 font-mono font-bold tracking-widest">JAN 2018 - DEZ 2019 | Técnico de Suporte</p>
-                                <ul class="text-slate-400 text-xs md:text-sm leading-relaxed uppercase font-medium space-y-2">
-                                    <li class="flex items-start gap-2"><span class="text-white/50">▸</span> <span>Suporte técnico remoto especializado para equipamentos Dell Brasil (Nível OSRI).</span></li>
-                                    <li class="flex items-start gap-2"><span class="text-white/50">▸</span> <span>Troubleshooting avançado e isolamento de falhas em ambiente Windows 10.</span></li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Quality IT -->
-                            <div class="relative pl-8 md:pl-10 border-l-2 border-white/10">
-                                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white/20 ring-4 ring-white/5"></div>
-                                <p class="text-white text-lg md:text-xl font-black uppercase mb-1 tracking-tight">Quality IT</p>
-                                <p class="text-nexus-blue text-[10px] md:text-xs mb-3 font-mono font-bold tracking-widest">DEZ 2018 - MAR 2019 | Analista de T.I</p>
-                                <ul class="text-slate-400 text-xs md:text-sm leading-relaxed uppercase font-medium space-y-2">
-                                    <li class="flex items-start gap-2"><span class="text-white/50">▸</span> <span>Foco em infraestrutura corporativa e suporte especializado.</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right: Carousel Images -->
-                    <div class="flex-shrink-0 relative w-full lg:w-[450px]">
-                        <div class="w-full h-[350px] md:h-[550px] relative z-10">
-                            <div class="absolute inset-0 border border-nexus-neon/30 -translate-x-4 translate-y-4 rounded-xl hidden md:block"></div>
-                            <div id="carousel" class="w-full h-full glass-morphism overflow-hidden rounded-xl relative group shadow-2xl">
-                                <img src="public/profile-setup.jpg" class="carousel-item active noir-filter w-full h-full object-cover" alt="Architect 1">
-                                <img src="public/img1.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 2">
-                                <img src="public/img2.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 3">
-                                <img src="public/img3.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 4">
-                                <img src="public/img4.jpg" class="carousel-item noir-filter w-full h-full object-cover" alt="Architect 5">
-                                
-                                <div class="absolute bottom-6 left-6 font-mono text-[10px] z-20">
-                                    <div class="text-nexus-neon uppercase tracking-widest flex items-center gap-2">
-                                        <span class="w-2 h-2 bg-nexus-neon rounded-full animate-pulse"></span> 
-                                        ID: ARCH-72-VIVENCIA
-                                    </div>
-                                    <div class="font-bold bg-black/40 px-2 uppercase tracking-tighter" data-i18n="hero-feed">Feed: Live Telemetry Sync</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </section>
@@ -962,5 +926,77 @@
         showDoc('os');
     
     </script>
+<script>
+
+        // Typewriter Effect
+        const phrases = [
+            "Senior Systems Architect",
+            "SRE Specialist",
+            "AI Engineer",
+            "Cloud Infrastructure Expert"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter-text');
+        
+        if (typewriterElement) {
+            function typeWriter() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                let typeSpeed = isDeleting ? 30 : 80;
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    typeSpeed = 2500;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 500;
+                }
+                setTimeout(typeWriter, typeSpeed);
+            }
+            typeWriter();
+        }
+
+        // Accordion Logic
+        function toggleAccordion(id, btn) {
+            const content = document.getElementById(id);
+            if (!content) return;
+            const isOpen = content.classList.contains('open');
+            
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                if (el.id !== id) {
+                    el.classList.remove('open');
+                    if (el.previousElementSibling) el.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            if (!isOpen) {
+                content.classList.add('open');
+                btn.classList.add('active');
+            } else {
+                content.classList.remove('open');
+                btn.classList.remove('active');
+            }
+        }
+        
+        setTimeout(() => {
+            const firstAccBtn = document.querySelector('.accordion-button');
+            if(firstAccBtn) {
+                const match = firstAccBtn.getAttribute('onclick').match(/'([^']+)'/);
+                if (match) toggleAccordion(match[1], firstAccBtn);
+            }
+        }, 300);
+
+</script>
 </body>
 </html>
