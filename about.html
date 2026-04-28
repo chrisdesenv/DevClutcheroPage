@@ -86,35 +86,7 @@
             50% { opacity: 0; }
         }
 
-        /* Accordion transition */
-        .accordion-content {
-            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-
-        .accordion-content.open {
-            max-height: 1500px;
-            opacity: 1;
-        }
-        
-        .accordion-button.active {
-            border-color: #00ffff;
-            background: rgba(0, 255, 255, 0.1);
-        }
-        
-        .accordion-button.active .chevron {
-            transform: rotate(90deg);
-            color: #00ffff;
-        }
-        
-        /* Custom padding to allow nested items without jumping */
-        .acc-inner {
-            padding: 1.5rem;
-            border-top: 1px solid rgba(0, 210, 255, 0.1);
-        }
-    </style>
+            </style>
 </head>
 
 <body class="noxus-grid min-h-screen flex flex-col">
@@ -172,188 +144,27 @@
             </div>
         </div>
 
-        <!-- Accordion Section -->
-        <div class="space-y-4">
-            
-            <!-- Resumo Profissional -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-blue/30 transition-all hover:border-nexus-blue/50 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-resumo', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <span class="text-nexus-neon">>_</span>
-                        Resumo Profissional & Diferencial
-                    </div>
-                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
-                </button>
-                <div id="acc-resumo" class="accordion-content bg-nexus-dark/50">
-                    <div class="acc-inner border-nexus-blue/10 text-slate-300 text-sm leading-relaxed text-justify">
-                        <p>Especialista em infraestrutura crítica e automação de alta performance. Desenvolvedor e operador exclusivo do <strong class="text-nexus-neon">AuditCH NEXUS</strong>, plataforma proprietária de orquestração de IA para auditoria contínua, segurança e excelência técnica. Foco em garantir resultados superiores através de automação preditiva e arquitetura soberana.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Arsenal de Agentes -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-nexus-neon/30 transition-all hover:border-nexus-neon/50 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-arsenal', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <i data-lucide="bot" class="w-5 h-5 text-nexus-neon"></i>
-                        Arsenal de Agentes (Uso Privado / Excelência)
-                    </div>
-                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
-                </button>
-                <div id="acc-arsenal" class="accordion-content bg-nexus-dark/50">
-                    <div class="acc-inner border-nexus-neon/10 text-slate-300 text-sm leading-relaxed space-y-4">
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">DOCKER_RM:</strong> Gestão Adaptativa de Recursos (Learning Baseline/P95).</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">HULK & THOR:</strong> Auditoria de Segurança (OWASP) e Orquestração de Infraestrutura/Redes.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">IDEAFORGE (Robô Readme):</strong> Automação total de documentação técnica e gestão de ideias.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">NEXUS (Orquestrador Mestre):</strong> Inteligência autônoma de administração e balanceamento em cascata de múltiplos LLMs para evitar downtime e rate limits.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">Auditoria Sênior (IA):</strong> Engenharia autônoma para SRE, validando compliance e arquitetura de ponta a ponta.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-nexus-neon mt-0.5">▸</span> 
-                                <div><strong class="text-white">Gateway Gerenciador (Esquadrão Tático):</strong> Roteamento avançado, visão e segurança Zero-Trust.</div>
-                            </li>
-                        </ul>
-                        <p class="italic text-nexus-blue/80 text-xs mt-6 font-mono tracking-tighter">* Com mais de 1.400 skills mapeadas e integradas de forma autônoma.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experiência Profissional -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-xp', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <i data-lucide="briefcase" class="w-5 h-5 text-slate-400"></i>
-                        Experiência Profissional
-                    </div>
-                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
-                </button>
-                <div id="acc-xp" class="accordion-content bg-nexus-dark/50">
-                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed space-y-8">
+                        <!-- ABOUT / MANIFESTO SECTION -->
+                <div id="about" class="glass-morphism p-8 md:p-12 mb-16 border-l-4 border-nexus-neon shadow-[0_0_30px_rgba(0,255,255,0.05)] rounded-sm">
+                    <h3 class="text-nexus-neon text-sm uppercase font-mono mb-8 tracking-[0.3em] italic font-bold flex items-center gap-2">
+                        <i data-lucide="flame" class="w-5 h-5"></i>
+                        // Manifesto & Vivência
+                    </h3>
+                    
+                    <div class="space-y-6 text-slate-300 text-sm md:text-base leading-relaxed text-justify font-light border-l border-white/5 pl-4 md:pl-8">
+                        <p>Parto de princípios sólidos e da fé no Criador do universo. Sou um guerreiro focado: amo desafios e, quanto mais complexos, mais me aprofundo, aprendo, adapto e melhoro. Para mim, não há cenário desfavorável; enquanto houver propósito, eu faço acontecer.</p>
                         
-                        <div>
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
-                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Locaweb Company (Wake Commerce)</h4>
-                                <span class="text-nexus-neon font-mono text-xs font-bold md:text-right">2020 - 2025</span>
-                            </div>
-                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Analista de Infraestrutura SRE</p>
-                            <p class="text-justify">Gestão de Cloud AWS/Azure e clusters de Containers (ECS/Docker). Operação de monitoramento avançado (Zabbix/Grafana) e Backup (Veeam). Sustentação de ambientes de alta disponibilidade e missão crítica.</p>
-                        </div>
-
-                        <div class="border-t border-white/5 pt-6">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
-                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Hospital Univ. Evangélico Mackenzie</h4>
-                                <span class="text-nexus-blue font-mono text-xs font-bold md:text-right">2019 - 2020</span>
-                            </div>
-                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Técnico em Informática</p>
-                            <p class="text-justify">Implementação de arquitetura de rede e migração estratégica de servidores. Gestão de infraestrutura de emergência e suporte crítico N1-N2.</p>
-                        </div>
-
-                        <div class="border-t border-white/5 pt-6">
-                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-1 gap-2">
-                                <h4 class="text-white font-bold uppercase text-base tracking-widest">Sykes Brasil (Dell Support)</h4>
-                                <span class="text-slate-400 font-mono text-xs font-bold md:text-right">2018 - 2019</span>
-                            </div>
-                            <p class="text-nexus-blue text-xs font-mono mb-3 italic">Técnico de Suporte Especializado</p>
-                            <p class="text-justify">Troubleshooting avançado de hardware e software nível OSRI para Dell Brasil.</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cases de Sucesso -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-cases', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <i data-lucide="award" class="w-5 h-5 text-yellow-400"></i>
-                        Cases de Sucesso
-                    </div>
-                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
-                </button>
-                <div id="acc-cases" class="accordion-content bg-nexus-dark/50">
-                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed space-y-4">
-                        <ul class="space-y-5">
-                            <li class="flex items-start gap-3">
-                                <span class="text-yellow-400 mt-1">▸</span> 
-                                <div class="text-justify"><strong class="text-white">Projeto — SaaS para Musculação & Saúde:</strong> Arquitetura e desenvolvimento de plataforma escalável. Implementação de inteligências em background para otimização do fluxo end-to-end, gestão e experiência sem atritos na nuvem.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-yellow-400 mt-1">▸</span> 
-                                <div class="text-justify"><strong class="text-white">Projeto — Sistema de Auditoria de Código (IA):</strong> Engenharia de um ambiente SRE autônomo. Capaz de realizar varreduras profundas no código para identificar falhas arquiteturais, dívidas técnicas e aplicar correções estruturais em pipelines contínuos.</div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-yellow-400 mt-1">▸</span> 
-                                <div class="text-justify"><strong class="text-white">Projeto — Noxus Orquestrador (Ecossistema Corporativo):</strong> Criação do próprio motor de IA e sistema em cascata de múltiplos LLMs para sustentar automação extrema de processos, conectando e executando assincronamente integrações sem gargalos de rate limit.</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certificações, Habilidades e Idiomas -->
-            <div class="glass-morphism rounded-sm overflow-hidden border border-white/10 transition-all hover:border-white/30 group">
-                <button class="accordion-button w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-skills', this)">
-                    <div class="flex items-center gap-4 text-white font-mono uppercase tracking-widest text-sm font-bold">
-                        <i data-lucide="layers" class="w-5 h-5 text-nexus-blue"></i>
-                        Certificações, Habilidades & Idiomas
-                    </div>
-                    <i data-lucide="chevron-right" class="chevron w-5 h-5 text-slate-400 transition-transform duration-300"></i>
-                </button>
-                <div id="acc-skills" class="accordion-content bg-nexus-dark/50">
-                    <div class="acc-inner border-white/10 text-slate-300 text-sm leading-relaxed">
+                        <p>Enxergo que todos somos iguais em essência e direitos. Todos temos a centelha para sermos os melhores, basta o estímulo correto. Tenho respeito máximo pela sabedoria dos mais velhos, mas acredito que pessoas de todas as idades trazem bons ensinamentos. Cada um carrega sua própria cruz, e por isso busco fomentar uma comunidade que contribui mutuamente e celebra as conquistas alheias. Evito conflitos, mas não fujo de discussões sadias para agregar valor e defender o que é correto. Respeito e valorizo visões de mundo diferentes — é a diversidade de pensamentos que nos torna humanos.</p>
                         
-                        <div class="mb-8">
-                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Certificações & Cursos</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> CCNA Cisco (Routing/Switching)</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> AWS Cloud Practitioner</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> LPI Linux Essentials</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> Amazon ECS & Fargate Master</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> Telecomunicações (Técnico)</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-neon"></span> ADS (Graduação - Cursando)</div>
-                            </div>
-                        </div>
-
-                        <div class="mb-8">
-                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Habilidades Técnicas Principais</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Docker & Orquestração</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Cloud Architecture</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Python / Automação IA</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Networking TCP/IP</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> CyberSecurity / OWASP</div>
-                                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nexus-blue"></span> Linux & Windows Server</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 class="text-white font-bold uppercase mb-4 font-mono text-xs tracking-widest border-l-2 border-nexus-blue pl-3">Idiomas</h4>
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2"><strong class="text-white uppercase font-mono text-xs">Inglês:</strong> Técnico / Intermediário-Avançado</div>
-                                <div class="flex items-center gap-2"><strong class="text-white uppercase font-mono text-xs">Espanhol:</strong> Básico / Intermediário</div>
-                            </div>
-                        </div>
-
+                        <p>Amo a vida, a criação e a minha família. Sou casado desde dezembro de 2020 e, nessa jornada, adotamos nossas duas cachorras, além de uma terceira que resgatei da rua e que hoje vive feliz em uma chácara. Sei que não sou perfeito e erro, mas viver no erro é ignorância. Sou humilde para me desconstruir e refazer continuamente. Não vejo limitações; ninguém é limitado quando há verdadeira vontade.</p>
+                        
+                        <p>Essa resiliência e foco vêm de berço. Joguei futebol dos 4 aos 12 anos nas categorias de base do Paraná Clube e do Atlético Paranaense. Aos 13, conheci as artes marciais, mas por ser muito franzino, a necessidade me levou à musculação — uma base física e mental que me acompanha até hoje, agora também flertando com as corridas.</p>
+                        
+                        <p>A mentalidade competitiva e de alto rendimento reflete diretamente no meu estilo de vida e nos meus hobbies. Tenho um canal de lives e sempre busquei a alta performance nos games: jogo Counter-Strike desde a época do 1.6, com transição para o CS:GO e CS2, sempre em nível competitivo. Na plataforma GamersClub, sou Level 20 em três contas (alcançado tanto em equipe quanto jogando solo, para me provar), e alcancei o Level 10 na FACEIT com menos de 500 partidas. Gosto de assumir a responsabilidade como IGL (In-Game Leader) e entry fragger — sou aquele que vai na frente, disposto a 'morrer' pelo time para abrir o round e desenrolar a partida. Na grande maioria das vezes o resultado é o sucesso, pois confio no meu potencial e na execução do plano.</p>
+                        
+                        <p>Na trajetória profissional, uno essa disciplina implacável dos esportes à minha vivência em Telecomunicações (2013) e a uma paixão absoluta por Inteligência Artificial. Para chancelar essa evolução, curso Análise e Desenvolvimento de Sistemas (ADS), preparando o terreno para a pós-graduação. No mercado privado, assino a arquitetura de cases robustos, como o ecossistema SaaS Noxus.CH e o motor de auditoria AuditSenior. Atuo com máxima eficiência: absorvo o que existe e reinvento para melhor. Em vez de focar no cansaço, foco na produção e na gestão inteligente do tempo. Quando assumo um desafio — seja no servidor, no código ou na vida —, mapeio a causa raiz, assumo a linha de frente e orquestro o passo a passo exato para a vitória.</p>
                     </div>
                 </div>
-            </div>
-
-        </div>
 
     </main>
 
