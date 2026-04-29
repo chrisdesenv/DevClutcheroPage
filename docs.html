@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus.CH | Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            dark: '#050a14',
+                            blue: '#00d2ff',
+                            neon: '#00ffff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #050a14;
+            --text-color: #e2e8f0;
+            --grid-color: rgba(0, 210, 255, 0.05);
+            --glass-bg: rgba(10, 20, 40, 0.75);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .noxus-grid {
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glass-morphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .neon-text {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .doc-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .doc-card:hover {
+            border-color: #00ffff;
+            background: rgba(0, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body class="noxus-grid min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-[100] px-6 md:px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
+        <div class="flex items-center space-x-10">
+            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
+                <i data-lucide="zap" class="w-6 h-6"></i>
+                <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span class="text-nexus-neon">CH</span></span>
+            </a>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <a href="index.html" class="text-[9px] font-mono tracking-[0.2em] uppercase font-bold text-nexus-neon hover:opacity-80">Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
+        <div class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-black mb-4 font-mono tracking-tighter uppercase text-white neon-text">Documentation</h1>
+            <p class="text-nexus-neon font-mono text-xs uppercase tracking-[0.4em]">System Architecture & Technical Specifications</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Arch Card -->
+            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-nexus-neon">
+                <i data-lucide="cpu" class="w-10 h-10 text-nexus-neon mb-6"></i>
+                <h3 class="text-white text-xl font-bold font-mono mb-4">Core Architecture</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">Especificações sobre a orquestração mestre do Nexus, incluindo gateway de telemetria e integração com Agentes Agenticos.</p>
+                <div class="text-[10px] font-mono text-nexus-neon opacity-50 uppercase tracking-widest">Version 2.4.0-Stable</div>
+            </div>
+
+            <!-- API Card -->
+            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-nexus-blue">
+                <i data-lucide="code-2" class="w-10 h-10 text-nexus-blue mb-6"></i>
+                <h3 class="text-white text-xl font-bold font-mono mb-4">API Interface</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">Documentação dos endpoints RESTful e WebSocket para comunicação em tempo real com o Noxus Guardian.</p>
+                <div class="text-[10px] font-mono text-nexus-blue opacity-50 uppercase tracking-widest">GraphQL & REST Enabled</div>
+            </div>
+
+            <!-- Deployment Card -->
+            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-white/20">
+                <i data-lucide="cloud-lightning" class="w-10 h-10 text-white/50 mb-6"></i>
+                <h3 class="text-white text-xl font-bold font-mono mb-4">Deployment</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">Guia de containerização via Docker e orquestração Kubernetes para ambientes de alta disponibilidade.</p>
+                <div class="text-[10px] font-mono text-white/30 uppercase tracking-widest">AWS EKS / Azure AKS</div>
+            </div>
+        </div>
+
+        <div class="mt-20 glass-morphism p-10 rounded-sm">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-[1px] bg-nexus-neon"></div>
+                <h2 class="text-nexus-neon font-mono text-sm uppercase tracking-[0.3em]">Status do Sistema</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-2xl font-black text-white font-mono mb-1">99.9%</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Uptime</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-black text-white font-mono mb-1">< 40ms</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Latência</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-black text-white font-mono mb-1">256-bit</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Encryption</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-black text-white font-mono mb-1">Active</div>
+                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Orchestrator</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
+        &copy; 2026 Noxus Architectural Intelligence | Documentation Module
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
