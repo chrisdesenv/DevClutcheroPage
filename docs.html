@@ -128,8 +128,24 @@
             <button onclick="copyCommand('nexus-contact')" class="text-nexus-blue hover:text-nexus-neon transition-colors p-2" title="Suporte Técnico">
                 <i data-lucide="help-circle" class="w-4 h-4"></i>
             </button>
+            <!-- Menu Mobile Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-nexus-neon p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[150] bg-nexus-dark/98 backdrop-blur-2xl hidden flex-col items-center justify-center space-y-8 font-mono uppercase tracking-[0.3em] text-xs">
+        <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-nexus-neon hover:rotate-90 transition-transform">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="index.html" onclick="toggleMobileMenu()" class="hover:text-nexus-neon transition-colors py-4 px-8 border-b border-white/5 w-full text-center">Home</a>
+        <a href="about.html" onclick="toggleMobileMenu()" class="hover:text-nexus-neon transition-colors py-4 px-8 border-b border-white/5 w-full text-center">About</a>
+        <a href="index.html#about" onclick="toggleMobileMenu()" class="hover:text-nexus-neon transition-colors py-4 px-8 border-b border-white/5 w-full text-center">Trajetória</a>
+        <a href="index.html#architecture" onclick="toggleMobileMenu()" class="hover:text-nexus-neon transition-colors py-4 px-8 border-b border-white/5 w-full text-center">Arquitetura</a>
+        <a href="docs.html" onclick="toggleMobileMenu()" class="text-nexus-neon font-bold py-4 px-8 w-full text-center animate-pulse">Docs</a>
+    </div>
 
     <main class="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row gap-8">
@@ -809,6 +825,20 @@
     <script>
         lucide.createIcons();
 
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const body = document.body;
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                body.style.overflow = 'auto';
+            }
+        }
+
         function copyCommand(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('copy-toast');
@@ -823,8 +853,16 @@
             document.querySelectorAll('.doc-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.doc-tab-btn').forEach(el => el.classList.remove('active'));
             
-            document.getElementById(`doc-${context}`).classList.remove('hidden');
+            const targetContent = document.getElementById(`doc-${context}`);
+            targetContent.classList.remove('hidden');
             document.getElementById(`btn-doc-${context}`).classList.add('active');
+
+            if (window.innerWidth < 1024) {
+                setTimeout(() => {
+                    const y = targetContent.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }, 50);
+            }
         }
 
         // Initialize first tab
