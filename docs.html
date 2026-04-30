@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus.CH | Documentation</title>
+    <title>Docs | Nexus Architectural Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -29,7 +29,7 @@
             --bg-color: #050a14;
             --text-color: #e2e8f0;
             --grid-color: rgba(0, 210, 255, 0.05);
-            --glass-bg: rgba(10, 20, 40, 0.75);
+            --glass-bg: rgba(10, 20, 40, 0.85);
         }
 
         body {
@@ -51,105 +51,784 @@
             border: 1px solid rgba(0, 210, 255, 0.2);
         }
 
-        .neon-text {
+        .doc-tab-btn.active {
+            border-color: #00ffff !important;
+            background: rgba(0, 255, 255, 0.1) !important;
+            color: #00ffff !important;
+        }
+
+        #copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            transform: translateY(100px);
+            transition: transform 0.3s ease;
+        }
+
+        #copy-toast.show {
+            transform: translateY(0);
+        }
+
+        .command-block {
+            transition: all 0.3s ease;
+        }
+
+        .command-block:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+        }
+
+        .tech-card {
+            border-left: 4px solid #00d2ff;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-title {
             color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .doc-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .doc-card:hover {
-            border-color: #00ffff;
-            background: rgba(0, 255, 255, 0.05);
-            transform: translateY(-5px);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
     </style>
 </head>
 
-<body class="noxus-grid min-h-screen flex flex-col">
+<body class="noxus-grid min-h-screen">
+    <div id="copy-toast" class="glass-morphism px-6 py-3 rounded-lg border border-nexus-neon text-nexus-neon font-mono text-xs z-[200]">
+        Comando copiado para o clipboard!
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-[100] px-6 md:px-8 py-4 flex justify-between items-center backdrop-blur-2xl border-b border-white/5 glass-morphism">
         <div class="flex items-center space-x-10">
-            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity cursor-pointer">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2 text-nexus-neon hover:opacity-80 transition-opacity">
                 <i data-lucide="zap" class="w-6 h-6"></i>
                 <span class="font-mono font-bold tracking-tighter text-lg uppercase">Nexus.<span class="text-nexus-neon">CH</span></span>
             </a>
+
+            <!-- Navigation Links (Left Aligned) -->
+            <div class="flex items-center space-x-8 text-[9px] font-mono tracking-[0.2em] uppercase font-bold border-l border-white/10 pl-10">
+                <a href="index.html" class="hover:text-nexus-neon transition-colors flex items-center gap-2" title="Retornar ao Início">
+                    <i data-lucide="home" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">Home</span>
+                </a>
+                <span class="text-nexus-neon border-b border-nexus-neon pb-1">Docs</span>
+            </div>
         </div>
 
-        <div class="flex items-center space-x-6">
-            <a href="index.html" class="text-[9px] font-mono tracking-[0.2em] uppercase font-bold text-nexus-neon hover:opacity-80">Voltar ao Portfólio</a>
+        <!-- Right Side: Secondary Actions (Optional) -->
+        <div class="flex items-center space-x-4">
+            <button onclick="copyCommand('nexus-contact')" class="text-nexus-blue hover:text-nexus-neon transition-colors p-2" title="Suporte Técnico">
+                <i data-lucide="help-circle" class="w-4 h-4"></i>
+            </button>
         </div>
     </nav>
 
-    <main class="flex-grow pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
-        <div class="mb-16">
-            <h1 class="text-4xl md:text-6xl font-black mb-4 font-mono tracking-tighter uppercase text-white neon-text">Documentation</h1>
-            <p class="text-nexus-neon font-mono text-xs uppercase tracking-[0.4em]">System Architecture & Technical Specifications</p>
-        </div>
+    <main class="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full lg:w-80 space-y-2">
+                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mb-4 pl-4 italic">Protocolos & Guias</p>
+                <button onclick="showDoc('setup')" id="btn-doc-setup" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group active">
+                    <i data-lucide="terminal" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">SETUP: Estação de Build</span>
+                </button>
+                <button onclick="showDoc('infra')" id="btn-doc-infra" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="layers" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">INFRA: Kubernetes (K8s)</span>
+                </button>
+                <button onclick="showDoc('obs')" id="btn-doc-obs" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="activity" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">OBS: Stack de Monitoramento</span>
+                </button>
+                <button onclick="showDoc('git')" id="btn-doc-git" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="git-branch" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">GIT: Sincronia & Segurança</span>
+                </button>
+                <button onclick="showDoc('sql')" id="btn-doc-sql" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">SQL: Auditoria de Dados</span>
+                </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Arch Card -->
-            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-nexus-neon">
-                <i data-lucide="cpu" class="w-10 h-10 text-nexus-neon mb-6"></i>
-                <h3 class="text-white text-xl font-bold font-mono mb-4">Core Architecture</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Especificações sobre a orquestração mestre do Nexus, incluindo gateway de telemetria e integração com Agentes Agenticos.</p>
-                <div class="text-[10px] font-mono text-nexus-neon opacity-50 uppercase tracking-widest">Version 2.4.0-Stable</div>
-            </div>
+                <p class="text-slate-500 font-mono text-[9px] uppercase tracking-[0.3em] mt-6 mb-2 pl-4 italic">Fundamentos & Carreira</p>
+                <button onclick="showDoc('fundamentos')" id="btn-doc-fundamentos" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="book-open" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">WEB: Frontend & Backend</span>
+                </button>
+                <button onclick="showDoc('wsl')" id="btn-doc-wsl" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="monitor" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">WIN+WSL: Ambiente Base</span>
+                </button>
+                <button onclick="showDoc('docker')" id="btn-doc-docker" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="box" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">DOCKER: Containers</span>
+                </button>
+                <button onclick="showDoc('cicd')" id="btn-doc-cicd" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">CI/CD: Deploy Contínuo</span>
+                </button>
+                <button onclick="showDoc('dns')" id="btn-doc-dns" class="doc-tab-btn w-full text-left px-6 py-4 glass-morphism border-l-4 border-l-transparent hover:border-nexus-blue transition-all flex items-center gap-4 group">
+                    <i data-lucide="globe" class="w-4 h-4 text-slate-400 group-hover:text-nexus-blue"></i>
+                    <span class="font-mono text-xs uppercase tracking-widest">DNS: Domínios & Riscos</span>
+                </button>
+            </aside>
 
-            <!-- API Card -->
-            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-nexus-blue">
-                <i data-lucide="code-2" class="w-10 h-10 text-nexus-blue mb-6"></i>
-                <h3 class="text-white text-xl font-bold font-mono mb-4">API Interface</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Documentação dos endpoints RESTful e WebSocket para comunicação em tempo real com o Noxus Guardian.</p>
-                <div class="text-[10px] font-mono text-nexus-blue opacity-50 uppercase tracking-widest">GraphQL & REST Enabled</div>
-            </div>
+            <!-- Documentation Content -->
+            <div class="flex-1 glass-morphism p-8 md:p-12 relative overflow-hidden min-h-[70vh]">
+                <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <i data-lucide="binary" class="w-64 h-64"></i>
+                </div>
 
-            <!-- Deployment Card -->
-            <div class="glass-morphism p-8 doc-card rounded-sm border-l-4 border-white/20">
-                <i data-lucide="cloud-lightning" class="w-10 h-10 text-white/50 mb-6"></i>
-                <h3 class="text-white text-xl font-bold font-mono mb-4">Deployment</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Guia de containerização via Docker e orquestração Kubernetes para ambientes de alta disponibilidade.</p>
-                <div class="text-[10px] font-mono text-white/30 uppercase tracking-widest">AWS EKS / Azure AKS</div>
-            </div>
-        </div>
+                <!-- SETUP: Estação de Build -->
+                <div id="doc-setup" class="doc-content space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">Build Ready Protocol</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            Antes de compilar qualquer linha de código, seu ambiente precisa estar "armado" com as ferramentas fundamentais. Este guia cobre o setup universal para Windows (PowerShell) e Linux/Docker.
+                        </p>
 
-        <div class="mt-20 glass-morphism p-10 rounded-sm">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="w-12 h-[1px] bg-nexus-neon"></div>
-                <h2 class="text-nexus-neon font-mono text-sm uppercase tracking-[0.3em]">Status do Sistema</h2>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-2xl font-black text-white font-mono mb-1">99.9%</div>
-                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Uptime</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="atom" class="w-4 h-4"></i> Frontend (React & Vite)</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    O <strong>Vite</strong> proporciona o ambiente ultrarrápido para o desenvolvimento da interface moderna em <strong>React</strong>.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="server" class="w-4 h-4"></i> Backend (FastAPI & Python)</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    Motor de inteligência e orquestração de Agentes e LLMs, escrito em Python garantindo escalabilidade.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Dependências Core Universais</h4>
+                            
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalação via Winget (Windows)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e</code>
+                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Build Frontend (React)</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalar Pacotes e Iniciar Vite Server</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">npm install ; npm run dev</code>
+                                    <button onclick="copyCommand('npm install ; npm run dev')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Build Backend (Python)</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ambiente Virtual, Pip Install e Uvicorn Server</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">python -m venv venv ; .\venv\Scripts\activate ; pip install -r requirements.txt ; uvicorn main:app --reload</code>
+                                    <button onclick="copyCommand('python -m venv venv ; .\\venv\\Scripts\\activate ; pip install -r requirements.txt ; uvicorn main:app --reload')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="text-2xl font-black text-white font-mono mb-1">< 40ms</div>
-                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Latência</div>
+
+                <!-- INFRA: Kubernetes (K8s) -->
+                <div id="doc-infra" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">☸️ GUIA DEFINITIVO SRE: Kubernetes</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            Este guia serve como a base de sobrevivência e orquestração. Ele evolui do zero até os comandos de debugging extremo e arquitetura.
+                            NUNCA rode um comando complexo sem antes garantir que as dependências base estão instaladas e no PATH.
+                        </p>
+
+                        <!-- Documentação Teórica (Arquitetura K8s) -->
+                        <div class="space-y-4 pt-4">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="box" class="w-4 h-4"></i> Docker: O Motor de Virtualização</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> Plataforma que empacota o código e suas dependências em containers padronizados.<br>
+                                    <strong>Por que usar:</strong> Elimina o "na minha máquina funciona". O container que roda no seu PC é 100% idêntico ao que vai para a nuvem em produção. O K8s precisa do Docker (ou containerd) como motor base para instanciar as imagens.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="package" class="w-4 h-4"></i> Pod: A Unidade Fundamental</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> A menor unidade gerenciável do Kubernetes. Atua como uma "cápsula" que envelopa um ou mais containers Docker, gerenciando recursos, armazenamento e rede de forma isolada.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="layers" class="w-4 h-4"></i> Deployment: Gestão de Estado & Escala</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> O maestro da resiliência do sistema. Define o estado desejado (ex: número de réplicas) e realiza o Auto-Healing (recriação automática) caso algum Pod apresente falha crítica.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="shield" class="w-4 h-4"></i> Requests & Limits: Gestão de Recursos</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> Mecanismo de segurança que impede que um processo em falha consuma todos os recursos do host. Evita travamentos globais (OOM Kill) definindo limites rígidos de CPU e RAM para cada container.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> 0. Dependências Prévias (Obrigatórias)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Aviso: Sem isso, o Windows/Terminal vai acusar "comando não reconhecido".</p>
+                            
+                            <ul class="space-y-4 text-xs text-slate-400 leading-relaxed list-disc pl-4">
+                                <li><strong>Docker Desktop:</strong> O motor base de virtualização.</li>
+                                <li><strong>k3d ou Minikube:</strong> Ferramentas CLI que criam um Cluster Kubernetes "leve" rodando dentro do Docker, poupando a RAM do SO.
+                                    <br><span class="text-[10px] text-nexus-neon font-mono mt-1 block">Instalação (k3d): choco install k3d</span>
+                                </li>
+                                <li><strong>kubectl:</strong> A varinha mágica. O cliente oficial de linha de comando que conversa com o cluster K8s.
+                                    <br><span class="text-[10px] text-nexus-neon font-mono mt-1 block">Instalação: winget install -e --id Kubernetes.kubectl</span>
+                                </li>
+                                <li><strong>Helm:</strong> O Gerenciador de Pacotes do Kubernetes. Usado para instalar stacks complexas como o Grafana de forma automatizada.
+                                    <br><span class="text-[10px] text-nexus-neon font-mono mt-1 block">Instalação: winget install Helm.Helm</span>
+                                </li>
+                            </ul>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-12">> 1. Kubernetes: O Início (Visualização)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Use estes comandos para saber o que está acontecendo na infraestrutura.</p>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verifica se o cluster e o Control Plane estão online</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">kubectl cluster-info ; kubectl get nodes</code>
+                                    <button onclick="copyCommand('kubectl cluster-info ; kubectl get nodes')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Lista divisões (namespaces) e pods em execução</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">kubectl get namespaces ; kubectl get pods -A</code>
+                                    <button onclick="copyCommand('kubectl get namespaces ; kubectl get pods -A')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-12">> 2. Kubernetes: O Dia a Dia SRE (Execução)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Comandos para aplicar IaC e verificar os logs (Sempre use arquivos .yaml).</p>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Criar ou Destruir recursos via YAML Declarativo</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">kubectl apply -f arquivo.yaml ; kubectl delete -f arquivo.yaml</code>
+                                    <button onclick="copyCommand('kubectl apply -f arquivo.yaml ; kubectl delete -f arquivo.yaml')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Leitura de Logs (Streaming) e Acesso Remoto (SSH no Pod)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">kubectl logs -f &lt;nome-do-pod&gt; ; kubectl exec -it &lt;nome-do-pod&gt; -- /bin/sh</code>
+                                    <button onclick="copyCommand('kubectl logs -f <nome-do-pod> ; kubectl exec -it <nome-do-pod> -- /bin/sh')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-12">> 3. Kubernetes: Comandos Complexos (Tratamento de Crise)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Para quando o Auto-Healing falha e você precisa atuar como cirurgião.</p>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Investigação de CrashLoopBackOff (Eventos de Erro)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">kubectl describe pod &lt;nome-do-pod&gt;</code>
+                                    <button onclick="copyCommand('kubectl describe pod <nome-do-pod>')" class="p-2 text-nexus-blue hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Port-Forward (Túnel Seguro) e Topografia de Recursos</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">kubectl port-forward svc/&lt;nome-do-serviço&gt; 8080:80 ; kubectl top pods</code>
+                                    <button onclick="copyCommand('kubectl port-forward svc/<nome-do-serviço> 8080:80 ; kubectl top pods')" class="p-2 text-nexus-blue hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="text-2xl font-black text-white font-mono mb-1">256-bit</div>
-                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Encryption</div>
+
+                <!-- OBS: Stack de Monitoramento -->
+                <div id="doc-obs" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">📊 O STACK PLG - NÍVEL ARQUITETO</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            A visibilidade total do sistema depende de três pilares: Métricas (Números), Logs (Texto) e Painéis (Visualização). Como instalar a tríade de observabilidade (Prometheus, Loki, Grafana) em minutos, graças ao HELM.
+                        </p>
+
+                        <!-- Documentação Teórica (Arquitetura PLG) -->
+                        <div class="space-y-4 pt-4">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="activity" class="w-4 h-4"></i> PROMETHEUS - Motor de Métricas</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> O Termômetro da infra. Especializado em séries temporais numéricas. <br>
+                                    <strong>Por que usar:</strong> Utiliza coleta ativa (Pull) para monitorar a saúde de cada container, emitindo alertas antes que o sistema caia.
+                                </p>
+                            </div>
+
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="file-text" class="w-4 h-4"></i> LOKI - Centralização de Logs</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> O gravador de caixa-preta. Otimizado para agregação de logs em larga escala. <br>
+                                    <strong>Por que usar:</strong> Diferente de outros bancos pesados, ele indexa apenas metadados (Labels), garantindo buscas instantâneas com baixo custo de servidor.
+                                </p>
+                            </div>
+
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="pie-chart" class="w-4 h-4"></i> GRAFANA - Visualização</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>O que é:</strong> O Painel de Controle (Dashboard) unificado da infraestrutura. <br>
+                                    <strong>Por que usar:</strong> Conecta-se ao Prometheus e ao Loki simultaneamente, permitindo cruzar gráficos de uso de CPU com linhas de erro no código na mesma tela.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Comandos Operacionais -->
+                        <div class="space-y-6 pt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> 4.1. Adicionar os repositórios no Helm</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Sincroniza e atualiza os catálogos locais</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts ; helm repo add grafana https://grafana.github.io/helm-charts ; helm repo update</code>
+                                    <button onclick="copyCommand('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts ; helm repo add grafana https://grafana.github.io/helm-charts ; helm repo update')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-12">> 4.2. Instalando a artilharia no namespace 'observability'</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Criar quarto isolado e instalar Stack Prometheus & Loki</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">kubectl create namespace observability ; helm install prometheus prometheus-community/prometheus -n observability ; helm install loki grafana/loki-stack -n observability</code>
+                                    <button onclick="copyCommand('kubectl create namespace observability ; helm install prometheus prometheus-community/prometheus -n observability ; helm install loki grafana/loki-stack -n observability')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalar o painel visual (Grafana)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">helm install grafana grafana/grafana -n observability</code>
+                                    <button onclick="copyCommand('helm install grafana grafana/grafana -n observability')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-12">> 4.3. Acessando o Grafana</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Como acessar a tela do Grafana se ele está preso no K8s?</p>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Port-forward para expor a porta 80 do cluster no seu localhost:3000</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">kubectl get svc -n observability ; kubectl port-forward svc/grafana 3000:80 -n observability</code>
+                                    <button onclick="copyCommand('kubectl get svc -n observability ; kubectl port-forward svc/grafana 3000:80 -n observability')" class="p-2 text-nexus-blue hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-5 h-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-nexus-blue/5 border-l-2 border-nexus-blue mt-8 text-xs text-slate-400">
+                                <strong>DICA SRE:</strong> Nunca digite comandos manualmente para criar pods (kubectl run). Use sempre arquivos .yaml. Infraestrutura como Código (IaC) é o que permite auditoria, versionamento no Git e recuperação total em 5 segundos se a máquina queimar.
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="text-2xl font-black text-white font-mono mb-1">Active</div>
-                    <div class="text-[9px] text-slate-500 uppercase tracking-widest">Orchestrator</div>
+
+                <!-- GIT: Sincronia & Segurança -->
+                <div id="doc-git" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">Git & Operational Security</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">
+                            O controle de versão exige rigor. Protocolos de autenticação e auditoria de segurança para garantir a integridade do código.
+                        </p>
+
+                        <div class="space-y-6 mt-8">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Controle Remoto (GitHub CLI)</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Autenticação e Gestão de Issues/Pull Requests</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto">gh auth login ; gh repo view --web ; gh pr list ; gh issue list</code>
+                                    <button onclick="copyCommand('gh auth login ; gh repo view --web ; gh pr list ; gh issue list')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Auditoria Sentinel (Segurança Local)</h4>
+
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificar Vazamento de Dados Sensíveis e Executar Sentinela</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto">node scripts/sentinel_audit.js --env-only ; git ls-files .env ; git status -u</code>
+                                    <button onclick="copyCommand('node scripts/sentinel_audit.js --env-only ; git ls-files .env ; git status -u')" class="p-2 text-nexus-blue hover:text-white transition-colors" title="Copiar Comando">
+                                        <i data-lucide="copy" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- SQL: Auditoria de Dados -->
+                <div id="doc-sql" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">SQL Data Integrity</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Integridade e performance. Auditoria de execução para garantir escalabilidade e consistência dos dados.
+                        </p>
+
+                        <div class="tech-card mt-8">
+                            <h5 class="tech-title">Análise de Performance: EXPLAIN ANALYZE</h5>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Ferramenta fundamental para entender o plano de execução do banco de dados, permitindo a otimização de índices e redução de custo computacional.
+                            </p>
+                        </div>
+
+                        <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-8">
+                            <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Execução de Auditoria de Consulta</p>
+                            <div class="flex items-center gap-3">
+                                <code class="flex-1 block text-sm text-nexus-neon font-mono">EXPLAIN ANALYZE SELECT * FROM [TABLE_NAME];</code>
+                                <button onclick="copyCommand('EXPLAIN ANALYZE SELECT * FROM [TABLE_NAME];')" class="p-2 text-nexus-neon hover:text-white transition-colors" title="Copiar Comando">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUNDAMENTOS: Frontend & Backend -->
+                <div id="doc-fundamentos" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🌐 Fundamentos: Como a Web Funciona</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Antes de escrever uma linha de código, entenda o mapa do território. Toda aplicação web moderna tem três camadas: o que o usuário vê (Frontend), o que processa a lógica (Backend) e onde os dados vivem (Banco de Dados).</p>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="monitor" class="w-4 h-4"></i> Frontend — O que o usuário VÊ</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Tudo que aparece na tela do navegador. Botões, formulários, animações, cores. É a "fachada" da aplicação.<br><strong>Tecnologias principais:</strong> HTML (estrutura), CSS (estilo), JavaScript (interatividade). Frameworks modernos: <strong>React</strong> (Meta), <strong>Vue</strong>, <strong>Angular</strong> (Google).<br><strong>No nosso stack:</strong> Usamos React + Vite — o ambiente de desenvolvimento mais rápido do mercado hoje.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="server" class="w-4 h-4"></i> Backend — O que o usuário NÃO vê</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> A "sala de máquinas". Processa as regras de negócio, autentica usuários, se comunica com o banco de dados e retorna respostas via API.<br><strong>Tecnologias principais:</strong> Python (FastAPI/Django), Node.js (Express), Java (Spring), Go.<br><strong>No nosso stack:</strong> Python + FastAPI — rápido, moderno e nativo para IA/LLMs.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="database" class="w-4 h-4"></i> Banco de Dados — Onde os dados VIVEM</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> O cofre da aplicação. Armazena tudo: usuários, pedidos, mensagens, configurações.<br><strong>Tipos:</strong><br>• <strong>Relacional (SQL):</strong> Dados organizados em tabelas com relações. Ex: PostgreSQL, MySQL, SQLite.<br>• <strong>Não-relacional (NoSQL):</strong> Dados flexíveis em documentos/JSON. Ex: MongoDB, Redis, Firebase.<br><strong>Regra de ouro:</strong> SQL para dados estruturados e relacionais. NoSQL para dados flexíveis e de alta escala.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="zap" class="w-4 h-4"></i> API — A ponte entre os mundos</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Application Programming Interface. É o "garçom" que leva o pedido do Frontend para o Backend e traz a resposta de volta.<br><strong>Padrão moderno:</strong> REST API usando HTTP (GET, POST, PUT, DELETE). O Frontend faz uma requisição, o Backend processa e retorna um JSON.<br><strong>Analogia:</strong> Você (usuário) faz o pedido, o garçom (API) leva para a cozinha (Backend), que busca os ingredientes no estoque (Banco de Dados) e volta com o prato pronto.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-nexus-blue/5 border-l-2 border-nexus-neon mt-4 text-xs text-slate-400">
+                            <strong>PRÓXIMO PASSO:</strong> Com os conceitos claros, vá para <button onclick="showDoc('wsl')" class="text-nexus-neon underline hover:text-white">WIN+WSL: Ambiente Base</button> para preparar sua máquina do zero antes de qualquer comando.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIN+WSL: Ambiente Base -->
+                <div id="doc-wsl" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🖥️ Windows + WSL: Do Zero ao Ambiente</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Antes de qualquer comando de desenvolvimento, seu Windows precisa ser liberado para executar scripts e seu ambiente Linux (WSL) precisa estar ativo. Esta é a fundação de tudo.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="shield-off" class="w-4 h-4"></i> Por que liberar o PowerShell?</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">Por padrão, o Windows bloqueia a execução de scripts externos por segurança (política <strong>Restricted</strong>). Para rodar npm, pip, scripts de automação e ferramentas de dev, você precisa mudar para <strong>RemoteSigned</strong> — que permite scripts locais e assina os externos.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="terminal" class="w-4 h-4"></i> O que é WSL?</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>Windows Subsystem for Linux.</strong> Roda um kernel Linux real dentro do Windows, sem precisar de VM ou dual-boot. Com ele você tem acesso a comandos bash, apt, curl e todo o ecossistema Linux — essencial para containers Docker e Kubernetes.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Passo 1: Liberar PowerShell para Scripts (Admin)</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Abrir PowerShell como Administrador e executar</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+                                    <button onclick="copyCommand('Set-ExecutionPolicy RemoteSigned -Scope CurrentUser')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 2: Instalar WSL 2 + Ubuntu</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instala WSL com Ubuntu (requer reinicialização)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">wsl --install ; wsl --set-default-version 2</code>
+                                    <button onclick="copyCommand('wsl --install ; wsl --set-default-version 2')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 3: Instalar Ferramentas Core (Windows)</h4>
+                            <p class="text-xs text-slate-500 italic mb-4">Dependências: Winget (já incluso no Windows 10/11).</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Git + GitHub CLI + Node.js em um comando</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e</code>
+                                    <button onclick="copyCommand('winget install --id Git.Git GitHub.cli OpenJS.NodeJS -e')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Passo 4: Atualizar Ubuntu (dentro do WSL)</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Abrir terminal Ubuntu e atualizar pacotes</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">sudo apt update && sudo apt upgrade -y && sudo apt install -y curl git build-essential</code>
+                                    <button onclick="copyCommand('sudo apt update && sudo apt upgrade -y && sudo apt install -y curl git build-essential')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-nexus-blue/5 border-l-2 border-nexus-neon mt-6 text-xs text-slate-400">
+                                <strong>PRÓXIMO PASSO:</strong> Com o ambiente preparado, instale o <button onclick="showDoc('docker')" class="text-nexus-neon underline hover:text-white">Docker</button> para containerização.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOCKER: Containers -->
+                <div id="doc-docker" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🐳 Docker: Containers na Prática</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">Docker é a tecnologia que empacota sua aplicação e todas as suas dependências em um container isolado e portátil. Elimina o "na minha máquina funciona". Pré-requisito para Kubernetes.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="box" class="w-4 h-4"></i> Container vs Máquina Virtual</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">Uma VM emula um computador inteiro (SO completo, ~GBs de RAM). Um Container compartilha o kernel do SO host e isola apenas a aplicação (~MBs). Resultado: containers iniciam em segundos, são portáteis e usam uma fração dos recursos.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="file-code" class="w-4 h-4"></i> Dockerfile: A Receita</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">É um arquivo de texto com instruções passo a passo de como montar a imagem do container. Você define o SO base, instala dependências, copia o código e declara o comando de inicialização. Commitado no Git junto com o código — é IaC na essência.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Instalação: Docker Desktop (Windows + WSL)</h4>
+                            <p class="text-xs text-slate-500 italic mb-2">Dependência: WSL 2 instalado e ativo (ver seção WIN+WSL).</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Instalar Docker Desktop via Winget</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">winget install -e --id Docker.DockerDesktop</code>
+                                    <button onclick="copyCommand('winget install -e --id Docker.DockerDesktop')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2 mt-8">> Comandos Essenciais do Dia a Dia</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ver containers rodando e todas as imagens locais</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker ps ; docker images</code>
+                                    <button onclick="copyCommand('docker ps ; docker images')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Build de imagem e execução do container</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker build -t minha-app:v1 . ; docker run -d -p 8080:8080 minha-app:v1</code>
+                                    <button onclick="copyCommand('docker build -t minha-app:v1 . ; docker run -d -p 8080:8080 minha-app:v1')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Logs do container e acesso interno (bash)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">docker logs -f &lt;container_id&gt; ; docker exec -it &lt;container_id&gt; /bin/sh</code>
+                                    <button onclick="copyCommand('docker logs -f <container_id> ; docker exec -it <container_id> /bin/sh')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Subir múltiplos serviços com Docker Compose</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">docker compose up -d ; docker compose down</code>
+                                    <button onclick="copyCommand('docker compose up -d ; docker compose down')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Limpeza: remover containers parados e imagens não usadas</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">docker system prune -f</code>
+                                    <button onclick="copyCommand('docker system prune -f')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CI/CD: Deploy Contínuo -->
+                <div id="doc-cicd" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">⚙️ CI/CD: Deploy Automático</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">CI/CD é o pipeline que leva seu código do repositório até a produção de forma automática, rápida e segura. Sem deploy manual, sem surpresas.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="git-merge" class="w-4 h-4"></i> CI — Integração Contínua</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> A cada push no repositório, uma pipeline roda automaticamente: instala dependências, executa testes e valida o código. Se falhar, o deploy não acontece. Garante que código quebrado nunca chegue em produção.<br><strong>Ferramentas:</strong> GitHub Actions, GitLab CI, CircleCI, Jenkins.</p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="rocket" class="w-4 h-4"></i> CD — Entrega Contínua</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>O que é:</strong> Após o CI passar, o CD automatiza o deploy para o ambiente de destino (staging ou produção). No nosso stack: push na <code class="text-nexus-neon">main</code> → Cloudflare Pages compila o frontend automaticamente em ~1 minuto.<br><strong>Resultado:</strong> Zero intervenção manual para colocar uma feature no ar.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Fluxo Git para CI/CD (Dia a Dia)</h4>
+                            <p class="text-xs text-slate-500 italic mb-2">Dependências: Git instalado, repositório no GitHub, Cloudflare/Render configurado.</p>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Fluxo completo: stage → commit → push → pipeline dispara</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">git add . ; git commit -m "feat: descrição da mudança" ; git push origin main</code>
+                                    <button onclick="copyCommand('git add . ; git commit -m \"feat: descrição da mudança\" ; git push origin main')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Ver status dos deploys via GitHub CLI</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">gh run list --limit 5 ; gh run watch</code>
+                                    <button onclick="copyCommand('gh run list --limit 5 ; gh run watch')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-yellow-500/5 border-l-2 border-yellow-500 mt-6 text-xs text-slate-400">
+                                <strong class="text-yellow-400">BOAS PRÁTICAS:</strong> Nunca commite diretamente na <code class="text-nexus-neon">main</code> em projetos com equipe. Use branches com PRs revisados. Mantenha mensagens de commit descritivas (feat:, fix:, docs:, chore:) para rastreabilidade total no histórico.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DNS: Domínios & Riscos -->
+                <div id="doc-dns" class="doc-content hidden space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold font-mono tracking-tighter text-white uppercase italic">🌍 DNS: O Mapa da Internet</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl">DNS (Domain Name System) é a agenda telefônica da internet. Traduz o nome <code class="text-nexus-neon">seusite.com</code> para o endereço IP do servidor. Mexer nele sem conhecimento causa downtime, perda de e-mails e queda no ranking do Google.</p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="globe" class="w-4 h-4"></i> Tipos de Registros DNS</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>A Record:</strong> Aponta o domínio para um endereço IPv4. Ex: <code class="text-nexus-neon">seusite.com → 192.168.1.1</code><br>
+                                    <strong>CNAME:</strong> Alias para outro domínio. Ex: <code class="text-nexus-neon">www → seusite.com</code><br>
+                                    <strong>MX:</strong> Define os servidores de e-mail. Mexer errado = todos os e-mails param de chegar.<br>
+                                    <strong>TXT:</strong> Verificações de propriedade, SPF, DKIM (anti-spam).<br>
+                                    <strong>NS:</strong> Define quem é o servidor autoritativo do domínio. <strong>Alterar NS = downtime de até 48h.</strong>
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="clock" class="w-4 h-4"></i> TTL — O Tempo que Ninguém Fala</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed"><strong>TTL (Time To Live):</strong> Define por quantos segundos o registro DNS fica em cache no mundo. TTL padrão = 3600s (1 hora). Se você tiver TTL 86400 (24h) e trocar o servidor, a mudança pode demorar até 24h para propagar globalmente.<br><strong>Estratégia profissional:</strong> Antes de uma migração, reduza o TTL para 300s (5 min) com 48h de antecedência. Após migrar, aumente de volta.</p>
+                            </div>
+                            <div class="tech-card border-nexus-neon">
+                                <h5 class="tech-title"><i data-lucide="alert-triangle" class="w-4 h-4"></i> ⚠️ O Que Causa Downtime</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>Trocar NS (Nameservers):</strong> Downtime de 2 a 48 horas. Afeta TUDO: site, e-mail, subdomínios.<br>
+                                    <strong>Alterar MX sem backup:</strong> E-mails se perdem durante a propagação.<br>
+                                    <strong>Deletar registro A:</strong> Site sai do ar imediatamente.<br>
+                                    <strong>Renomear domínio:</strong> Perde todo o histórico de SEO, backlinks e posicionamento no Google. Evite a todo custo.
+                                </p>
+                            </div>
+                            <div class="tech-card border-nexus-blue">
+                                <h5 class="tech-title"><i data-lucide="search" class="w-4 h-4"></i> SEO & DNS: O Que Donos de Negócio PRECISAM Saber</h5>
+                                <p class="text-xs text-slate-400 leading-relaxed">O Google indexa o domínio, não o servidor. Trocar o domínio ou mudar URL de páginas sem redirect 301 é equivalente a destruir anos de trabalho de SEO. Se você tem uma loja online ou SaaS com tráfego orgânico, <strong>jamais mude o domínio</strong> sem um plano detalhado de redirecionamentos e monitoramento de ranking. O impacto pode durar meses.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 pt-4">
+                            <h4 class="text-nexus-blue font-mono text-xs uppercase tracking-widest italic border-b border-nexus-blue/20 pb-2">> Diagnóstico DNS via CLI</h4>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Consultar registros DNS de um domínio</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">nslookup seudominio.com ; nslookup -type=MX seudominio.com</code>
+                                    <button onclick="copyCommand('nslookup seudominio.com ; nslookup -type=MX seudominio.com')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Verificar propagação DNS global (WSL/Linux)</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-neon font-mono overflow-x-auto whitespace-nowrap">dig seudominio.com +short ; dig seudominio.com NS +short</code>
+                                    <button onclick="copyCommand('dig seudominio.com +short ; dig seudominio.com NS +short')" class="p-2 text-nexus-neon hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="command-block bg-black/40 p-6 border border-white/10 rounded-sm mt-4">
+                                <p class="text-[10px] text-slate-500 font-mono mb-4 uppercase tracking-widest">// Testar conectividade e latência com o servidor</p>
+                                <div class="flex items-center gap-3">
+                                    <code class="flex-1 block text-sm text-nexus-blue font-mono overflow-x-auto whitespace-nowrap">ping seudominio.com ; tracert seudominio.com</code>
+                                    <button onclick="copyCommand('ping seudominio.com ; tracert seudominio.com')" class="p-2 text-nexus-blue hover:text-white transition-colors"><i data-lucide="copy" class="w-5 h-5"></i></button>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-red-500/5 border-l-2 border-red-500 mt-6 text-xs text-slate-400">
+                                <strong class="text-red-400">REGRA DE OURO:</strong> Antes de qualquer alteração de DNS em ambiente produtivo: (1) documente os registros atuais, (2) reduza o TTL para 300s com 48h de antecedência, (3) faça a mudança em horário de baixo tráfego, (4) monitore por pelo menos 2 horas. Nunca mexa em DNS às sextas-feiras.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
 
-    <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
-        &copy; 2026 Noxus Architectural Intelligence | Documentation Module
+    <footer class="py-20 border-t border-white/5 text-center text-slate-500 text-[10px] font-mono uppercase tracking-[0.4em] bg-black/20 italic">
+        &copy; 2026 Noxus Architectural Intelligence | Security & Resilience Protocol
     </footer>
 
     <script>
         lucide.createIcons();
+
+        function copyCommand(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            });
+        }
+
+        function showDoc(context) {
+            document.querySelectorAll('.doc-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.doc-tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(`doc-${context}`).classList.remove('hidden');
+            document.getElementById(`btn-doc-${context}`).classList.add('active');
+        }
+
+        // Initialize first tab
+        showDoc('setup');
     </script>
 </body>
-
 </html>
